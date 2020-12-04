@@ -84,7 +84,7 @@ struct RegisterView: View {
                             .cornerRadius(10)
                     }
                 }
-                .padding(.top,5)
+                .padding(.vertical,5)
             }
         }
         .padding(.horizontal)
