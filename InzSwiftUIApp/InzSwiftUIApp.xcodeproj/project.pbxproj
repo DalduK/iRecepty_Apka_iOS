@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01232F47257D955B00563508 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01232F46257D955B00563508 /* LoadingView.swift */; };
 		0172E477257A83CE00ED727C /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E476257A83CE00ED727C /* UserAuth.swift */; };
 		0172E47A257A845700ED727C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E479257A845700ED727C /* LoginView.swift */; };
 		0172E47D257A87A600ED727C /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E47C257A87A600ED727C /* PassView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01232F46257D955B00563508 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0172E476257A83CE00ED727C /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		0172E479257A845700ED727C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0172E47C257A87A600ED727C /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0175EB28257AB6BA007C5CF8 /* Models */,
 				01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */,
 				01BF6ADC257A2C2600643495 /* ContentView.swift */,
+				01232F46257D955B00563508 /* LoadingView.swift */,
 				0175EB2B257AB9AE007C5CF8 /* HomeView.swift */,
 				0172E482257A8E5400ED727C /* CardView.swift */,
 				0172E479257A845700ED727C /* LoginView.swift */,
@@ -182,6 +185,7 @@
 				0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,
+				01232F47257D955B00563508 /* LoadingView.swift in Sources */,
 				0172E477257A83CE00ED727C /* UserAuth.swift in Sources */,
 				01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */,
 				0172E480257A895F00ED727C /* RegisterView.swift in Sources */,

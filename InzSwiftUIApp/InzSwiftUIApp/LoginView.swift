@@ -10,11 +10,13 @@ import SwiftUI
 struct LoginView: View {
     @State var userName: String = ""
     @State var password: String = ""
+    @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         NavigationView {
+            GeometryReader { geometry in
             ZStack{
                 VStack {
                     Text("Login")
@@ -85,6 +87,7 @@ struct LoginView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .padding(.horizontal)
+    }
     }
 }
 
