@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01232F47257D955B00563508 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01232F46257D955B00563508 /* LoadingView.swift */; };
+		013F85BE257EB76300C08E72 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F85BD257EB76300C08E72 /* MenuView.swift */; };
 		0172E477257A83CE00ED727C /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E476257A83CE00ED727C /* UserAuth.swift */; };
 		0172E47A257A845700ED727C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E479257A845700ED727C /* LoginView.swift */; };
 		0172E47D257A87A600ED727C /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E47C257A87A600ED727C /* PassView.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		01232F46257D955B00563508 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		013F85BD257EB76300C08E72 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		0172E476257A83CE00ED727C /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		0172E479257A845700ED727C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0172E47C257A87A600ED727C /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				0172E479257A845700ED727C /* LoginView.swift */,
 				0172E47F257A895F00ED727C /* RegisterView.swift */,
 				0172E47C257A87A600ED727C /* PassView.swift */,
+				013F85BD257EB76300C08E72 /* MenuView.swift */,
 				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
 				01BF6AE3257A2C2600643495 /* Info.plist */,
 				01BF6AE0257A2C2600643495 /* Preview Content */,
@@ -189,6 +192,7 @@
 				0172E477257A83CE00ED727C /* UserAuth.swift in Sources */,
 				01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */,
 				0172E480257A895F00ED727C /* RegisterView.swift in Sources */,
+				013F85BE257EB76300C08E72 /* MenuView.swift in Sources */,
 				0172E47A257A845700ED727C /* LoginView.swift in Sources */,
 				0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */,
 				01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */,

@@ -51,9 +51,11 @@ struct PassView: View {
                     }
                 }
                 .padding(.top,5)
+                
+                Spacer()
             }
         }
-        .padding(.horizontal)
+        .padding(.top, 10)
     }
     
 }
