@@ -11,7 +11,14 @@ struct HomeView: View {
     @State var index = 0
     @State var alpha: Double = 1
     @State var blurBack: Int = 30
+    @State private var selection: Tab = .featured
+
+        enum Tab {
+            case featured
+            case list
+        }
     var body: some View {
+        TabView(selection: $selection) {
             GeometryReader { gx in
                 ScrollView(.vertical, showsIndicators: false) {
                     ZStack{
@@ -22,6 +29,7 @@ struct HomeView: View {
                                 Spacer()
                             }
                             .padding(.horizontal)
+                            .padding(.top, 10)
                             
                             ScrollView (.horizontal, showsIndicators: false){
                                 HStack(spacing: 20)
@@ -39,6 +47,7 @@ struct HomeView: View {
                                         .padding()
                                         .frame(width: gx.size.width, height: gx.size.height * 0.8)
                                     }
+                                    
                                 }
                             }
                         }
@@ -63,8 +72,17 @@ struct HomeView: View {
                 }
                 
             }
+            .tabItem {
+                Label("Karty", systemImage: "greetingcard.fill")
+            }.tag(Tab.featured)
+            
+            ReceptList()
+                .tabItem {
+                    Label("Lista", systemImage: "list.bullet")
+            }.tag(Tab.list)
             
         }
+    }
 }
 
 //struct HomeView_Previews: PreviewProvider {

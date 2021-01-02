@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		01232F47257D955B00563508 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01232F46257D955B00563508 /* LoadingView.swift */; };
 		013F85BE257EB76300C08E72 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F85BD257EB76300C08E72 /* MenuView.swift */; };
+		0167D1D925A0792C00A843BD /* ReceptRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1D825A0792C00A843BD /* ReceptRowView.swift */; };
+		0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1DB25A07D4700A843BD /* ReceptList.swift */; };
+		0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1E225A07EDD00A843BD /* ReceptDetails.swift */; };
 		0172E477257A83CE00ED727C /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E476257A83CE00ED727C /* UserAuth.swift */; };
 		0172E47A257A845700ED727C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E479257A845700ED727C /* LoginView.swift */; };
 		0172E47D257A87A600ED727C /* PassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E47C257A87A600ED727C /* PassView.swift */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		01232F46257D955B00563508 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		013F85BD257EB76300C08E72 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0167D1D825A0792C00A843BD /* ReceptRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptRowView.swift; sourceTree = "<group>"; };
+		0167D1DB25A07D4700A843BD /* ReceptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptList.swift; sourceTree = "<group>"; };
+		0167D1E225A07EDD00A843BD /* ReceptDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptDetails.swift; sourceTree = "<group>"; };
 		0172E476257A83CE00ED727C /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		0172E479257A845700ED727C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0172E47C257A87A600ED727C /* PassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassView.swift; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
 				01BF6AE3257A2C2600643495 /* Info.plist */,
 				01BF6AE0257A2C2600643495 /* Preview Content */,
+				0167D1D825A0792C00A843BD /* ReceptRowView.swift */,
+				0167D1DB25A07D4700A843BD /* ReceptList.swift */,
+				0167D1E225A07EDD00A843BD /* ReceptDetails.swift */,
 			);
 			path = InzSwiftUIApp;
 			sourceTree = "<group>";
@@ -185,6 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */,
+				0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */,
 				0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,
@@ -193,6 +204,7 @@
 				01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */,
 				0172E480257A895F00ED727C /* RegisterView.swift in Sources */,
 				013F85BE257EB76300C08E72 /* MenuView.swift in Sources */,
+				0167D1D925A0792C00A843BD /* ReceptRowView.swift in Sources */,
 				0172E47A257A845700ED727C /* LoginView.swift in Sources */,
 				0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */,
 				01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */,
@@ -328,7 +340,7 @@
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InzSwiftUIApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,7 +348,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -350,7 +362,7 @@
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InzSwiftUIApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,7 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

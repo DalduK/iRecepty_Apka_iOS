@@ -61,7 +61,7 @@ struct LoginView: View {
                         
                         NavigationLink(destination: RegisterView(),
                             label: {
-                                Text("Przypomnij Hasło")
+                                Text("Utwórz konto")
                             })
                             .padding(.init(top: 0, leading: 15, bottom: 0, trailing: 15))
                     }
