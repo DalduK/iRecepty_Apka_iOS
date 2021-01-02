@@ -8,30 +8,27 @@
 import SwiftUI
 
 struct CardView: View {
-    var image: String
-    var data: String
-    var recepta: String
-    var lekarz: String
+    var cardsData: Cards
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         VStack {
-            Image(image)
+            Image(cardsData.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text(data)
+                    Text(cardsData.data)
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    Text(recepta)
+                    Text(cardsData.recepta)
                         .font(.title)
                         .fontWeight(.black)
                         .foregroundColor(.primary)
                         .lineLimit(3)
-                    Text(lekarz.uppercased())
+                    Text(cardsData.lekarz.uppercased())
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -55,6 +52,6 @@ struct CardView_Previews: PreviewProvider {
         var data = "Data"
         var recepta = "Recepta"
         var lekarz = "Dr. Andrzej Wolny"
-        CardView(image: image, data: data, recepta: recepta, lekarz: lekarz)
+        CardView(cardsData: cardsData[0])
     }
 }

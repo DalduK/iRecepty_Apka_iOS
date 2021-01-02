@@ -9,40 +9,55 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
+        NavigationView{
         VStack(alignment: .leading){
-            HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
-                Text("Konto użytkownika")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+            NavigationLink(destination: UserView()){
+                HStack {
+                    Image(systemName: "person.crop.circle")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Konto użytkownika")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+            .padding(.top, 70)
             }
-            .padding(.top,100)
-            HStack {
-                Image(systemName: "envelope")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
-                Text("Powiadomienia")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+//            HStack {
+//                Image(systemName: "envelope")
+//                    .foregroundColor(.gray)
+//                    .imageScale(.large)
+//                Text("Powiadomienia")
+//                    .foregroundColor(.gray)
+//                    .font(.headline)
+//            }
+//            .padding(.top,30)
+            NavigationLink(destination: SettingsView()){
+                HStack {
+                    Image(systemName: "wrench.and.screwdriver")
+                        .foregroundColor(.gray)
+                        .imageScale(.large)
+                    Text("Ustawienia")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
+                .padding(.top,20)
             }
-            .padding(.top,30)
-            HStack {
-                Image(systemName: "gear")
-                    .foregroundColor(.gray)
-                    .imageScale(.large)
-                Text("Ustawienia")
-                    .foregroundColor(.gray)
-                    .font(.headline)
-            }
-            .padding(.top,30)
             Spacer()
+            HStack {
+                Image(systemName: "person.crop.circle.badge.xmark")
+                    .foregroundColor(.gray)
+                    .imageScale(.large)
+                Text("Wyloguj")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+            }
+            .padding(.bottom,20.0)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .edgesIgnoringSafeArea(.all)
             
+    }
     }
 }
 
