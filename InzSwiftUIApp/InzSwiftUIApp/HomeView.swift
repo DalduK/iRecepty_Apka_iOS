@@ -75,7 +75,7 @@ struct HomeView: View {
                 .navigationBarHidden(true)
                 
             }
-            .accentColor( .white)
+            .accentColor( .white)   
             .tabItem {
                 Label("Karty", systemImage: "greetingcard.fill")
             }.tag(Tab.featured)

@@ -11,8 +11,26 @@ struct RegisterView: View {
     @State var userName: String = ""
     @State var email: String = ""
     @State var password: String = ""
+    @State var password2: String = ""
+    @State var showNoPasswordView = false
+    @State var showWrongPasswordView = false
+    @State var error = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var userAuth: UserAuth
     @State private var rules = false
+    
+    var noPassword: ActionSheet {
+        ActionSheet(title: Text("Puste Hasło"), message: Text("Podaj poprawne hasło"), buttons: [.cancel()])
+    }
+    
+    var wrongPassword: ActionSheet {
+        ActionSheet(title: Text("Hasła są różne"), message: Text("Podaj poprawne hasło"), buttons: [.cancel()])
+    }
+    
+    var regulations: ActionSheet {
+        ActionSheet(title: Text("Potwierdz regulamin !"), message: Text("Potwierdz regulamin aby utworzyc konto"), buttons: [.cancel()])
+    }
+    
     var body: some View {
     let colors = Gradient(colors: [.purple,.blue])
     let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
@@ -39,7 +57,7 @@ struct RegisterView: View {
                 
                 HStack {
                     Image(systemName: "envelope").foregroundColor(.gray)
-                    SecureField("Email",text:$userName)
+                    TextField("Email",text:$email)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
@@ -49,7 +67,7 @@ struct RegisterView: View {
                 
                 HStack {
                     Image(systemName: "lock").foregroundColor(.gray)
-                    TextField("Password",text:$userName)
+                    SecureField("Password",text:$password).textContentType(.password)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
@@ -59,7 +77,7 @@ struct RegisterView: View {
                 
                 HStack {
                     Image(systemName: "lock").foregroundColor(.gray)
-                    SecureField("Password",text:$userName)
+                    SecureField("Repeat",text:$password2).textContentType(.password)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
@@ -73,9 +91,19 @@ struct RegisterView: View {
                 
                 ZStack{
                     Button(action: {
-                        withAnimation {
-                            userAuth.login()
-                    }
+                        if (password != "" || password2 != ""){
+                            if password == password2{
+                                print(password2)
+                                self.mode.wrappedValue.dismiss()
+                            }
+                            else{
+                                self.showWrongPasswordView.toggle()
+                                self.error.toggle()
+                            }}
+                        else{
+                            self.error.toggle()
+                            self.showNoPasswordView.toggle()
+                        }
                     }){
                         Text("Zarejestruj się")
                             .padding()
@@ -87,6 +115,13 @@ struct RegisterView: View {
                 .padding(.vertical,5)
             }
         }
+        .actionSheet(isPresented: $error, content: {
+            if showWrongPasswordView == true{
+                      return self.wrongPassword
+            }else{
+                return self.noPassword
+            }
+        })
         .padding(.horizontal)
     }
     

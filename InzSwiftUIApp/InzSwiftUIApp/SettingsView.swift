@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var userAuth: UserAuth
     var body: some View {
-        Text("Hello Settings")
+        let colors = Gradient(colors: [.purple,.blue])
+        let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
+        Button(action: {
+            withAnimation {
+                userAuth.logout()
+        }
+        }){
+            Text("Wyloguj się!")
+                .padding()
+                .background(gradient)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
     }
 }
 

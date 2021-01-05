@@ -29,7 +29,7 @@ struct PassView: View {
                 
                 HStack {
                     Image(systemName: "envelope").foregroundColor(.gray)
-                    TextField("Email",text:$userName)
+                    TextField("Email",text:$userName).textContentType(.emailAddress)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
