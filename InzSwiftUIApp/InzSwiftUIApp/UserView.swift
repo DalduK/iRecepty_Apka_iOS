@@ -9,7 +9,23 @@ import SwiftUI
 
 struct UserView: View {
     var body: some View {
-        Text("Hello user")
+        NavigationView{
+            List{
+                Section {
+                    Text("Nazwa użytkownika")
+                    Text("Data urodzin")
+                    Text("Nazwa użytkownika")
+                    Text("Data urodzin")
+                }
+                
+                Section {
+                    Text("Nazwa użytkownika")
+                    Text("Data urodzin")
+                    Text("Nazwa użytkownika")
+                    Text("Data urodzin")
+                }
+            }.navigationBarTitle("Ustawienia")
+        }
     }
 }
 

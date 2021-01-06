@@ -7,20 +7,27 @@
 
 import SwiftUI
 
+struct Login: Codable {
+    var refresh: String
+    var access: String
+}
+
 struct LoginView: View {
     @State var userName: String = ""
     @State var password: String = ""
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
+    @State var logged: Bool = false
+    
+    func setLog(){
+        
+    }
     
     func login(login: String, password: String){
-        print(login)
-        print(password)
         let json: [String: Any] = ["username": login,
                                    "password": password]
-        print(json)
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "http://127.0.0.1:8000/api/token/") else {
+        guard let url = URL(string: "https://3458181677b5.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
@@ -30,14 +37,28 @@ struct LoginView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
+            var statusCode: Int = 0
+            guard let data = data, let response = response, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+            if let httpResponse = response as? HTTPURLResponse {
+                statusCode = httpResponse.statusCode
             }
+            print(statusCode)
+            if statusCode == 200{
+                let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+                DispatchQueue.main.async {
+                    userAuth.setToken(token: dataJSON?["access"] as! String)
+                    withAnimation{
+                        userAuth.login()
+                    }
+                }
+                logged = true
+            }else {
+                logged = false
+            }
+            
         }
         task.resume()
     }
@@ -98,9 +119,6 @@ struct LoginView: View {
                     ZStack{
                         Button(action: {
                             login(login: userName, password: password)
-                            withAnimation {
-                                userAuth.login()
-                        }
                         }){
                             Text("Zaloguj się")
                                 .padding()
