@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61025A88F8700297BFE /* NewPasswordView.swift */; };
+		0114F61425A8EE0300297BFE /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61325A8EE0300297BFE /* NewData.swift */; };
+		0114F61725A8F7CE00297BFE /* eMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61625A8F7CE00297BFE /* eMailView.swift */; };
 		01232F47257D955B00563508 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01232F46257D955B00563508 /* LoadingView.swift */; };
 		013F85BE257EB76300C08E72 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F85BD257EB76300C08E72 /* MenuView.swift */; };
 		0167D1D925A0792C00A843BD /* ReceptRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1D825A0792C00A843BD /* ReceptRowView.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		0114F61025A88F8700297BFE /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
+		0114F61325A8EE0300297BFE /* NewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
+		0114F61625A8F7CE00297BFE /* eMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eMailView.swift; sourceTree = "<group>"; };
 		01232F46257D955B00563508 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		013F85BD257EB76300C08E72 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		0167D1D825A0792C00A843BD /* ReceptRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptRowView.swift; sourceTree = "<group>"; };
@@ -118,9 +122,11 @@
 				0167D1DB25A07D4700A843BD /* ReceptList.swift */,
 				0167D1E225A07EDD00A843BD /* ReceptDetails.swift */,
 				0167D1E725A0B07200A843BD /* SettingsView.swift */,
+				0114F61625A8F7CE00297BFE /* eMailView.swift */,
 				0167D1EB25A0B08700A843BD /* UserView.swift */,
 				0114F61025A88F8700297BFE /* NewPasswordView.swift */,
 				01BF6AE0257A2C2600643495 /* Preview Content */,
+				0114F61325A8EE0300297BFE /* NewData.swift */,
 			);
 			path = InzSwiftUIApp;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0114F61425A8EE0300297BFE /* NewData.swift in Sources */,
 				0167D1E825A0B07200A843BD /* SettingsView.swift in Sources */,
 				0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */,
 				0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */,
@@ -211,6 +218,7 @@
 				0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,
+				0114F61725A8F7CE00297BFE /* eMailView.swift in Sources */,
 				01232F47257D955B00563508 /* LoadingView.swift in Sources */,
 				0172E477257A83CE00ED727C /* UserAuth.swift in Sources */,
 				01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */,

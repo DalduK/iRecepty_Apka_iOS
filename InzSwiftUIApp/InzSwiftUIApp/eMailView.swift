@@ -1,5 +1,5 @@
 //
-//  NewPasswordView.swift
+//  eMailView.swift
 //  InzSwiftUIApp
 //
 //  Created by Przemysław Woźny on 08/01/2021.
@@ -7,24 +7,23 @@
 
 import SwiftUI
 
-struct NewPasswordView: View {
+struct eMailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var userName: String = ""
-    @State var password: String = ""
+    @State var eMail: String = ""
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         ZStack{
             VStack {
                 
-                Image("Password")
+                Image("email")
                     .resizable()
                     .scaledToFit()
                     .padding()
-                
+                Text("Podaj nowy adres email !")
                 HStack {
-                    Image(systemName: "lock").foregroundColor(.gray)
-                    SecureField("Stare hasło",text:$userName).textContentType(.emailAddress)
+                    Image(systemName: "envelope").foregroundColor(.gray)
+                    TextField("Nowy eMail",text:$eMail).textContentType(.emailAddress)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
@@ -32,15 +31,6 @@ struct NewPasswordView: View {
                 )
                 .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
                 
-                HStack {
-                    Image(systemName: "lock").foregroundColor(.gray)
-                    SecureField("Nowe Hasło",text:$userName).textContentType(.emailAddress)
-                }
-                .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10).stroke(gradient,lineWidth: 5)
-                )
-                .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
                 
                 ZStack{
                     Button(action: {
@@ -48,7 +38,7 @@ struct NewPasswordView: View {
                             
                     }
                     }){
-                        Text("Zresetuj Hasło !")
+                        Text("Zmień eMail !")
                             .padding()
                             .background(gradient)
                             .foregroundColor(.white)
@@ -60,13 +50,13 @@ struct NewPasswordView: View {
                 Spacer()
             }
         }
-        .navigationBarTitle("Zmień hasło", displayMode: .inline)
+        .navigationBarTitle("Zmień maila!", displayMode: .inline)
         .padding(.top, 10)
     }
 }
 
-struct NewPasswordView_Previews: PreviewProvider {
+struct eMailView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordView()
+        eMailView()
     }
 }

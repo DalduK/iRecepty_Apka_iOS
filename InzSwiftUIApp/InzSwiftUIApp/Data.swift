@@ -16,6 +16,7 @@ struct Cards: Hashable, Codable, Identifiable {
     var data: String
     var recepta: String
     var lekarz: String
+    var wykorzystana: String
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

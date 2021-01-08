@@ -16,16 +16,12 @@ struct PassView: View {
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         ZStack{
             VStack {
-                Text("Przypomnij hasło")
-                    .bold()
-                    .font(.title)
-                
-                Text("Podaj mail powiązany z kontem")
-                
                 Image("Password")
                     .resizable()
                     .scaledToFit()
                     .padding()
+                
+                Text("Podaj mail powiązany z kontem")
                 
                 HStack {
                     Image(systemName: "envelope").foregroundColor(.gray)
@@ -55,6 +51,7 @@ struct PassView: View {
                 Spacer()
             }
         }
+        .navigationBarTitle("Przypomnij hasło", displayMode: .inline)
         .padding(.top, 10)
     }
     

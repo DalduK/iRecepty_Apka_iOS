@@ -60,17 +60,15 @@ struct UserView: View {
                         Text("Zmień hasło")
                                 .gradientForeground(colors:  [.purple,.blue])
                     }
-                    HStack{
-                        Text("Zmień Dane")
-                            .gradientForeground(colors:  [.purple,.blue])
-                        Spacer()
-                        Image(systemName: "chevron.right").foregroundColor(.gray)
+                    NavigationLink(
+                        destination: NewData()){
+                        Text("Zmień dane")
+                                .gradientForeground(colors:  [.purple,.blue])
                     }
-                    HStack{
+                    NavigationLink(
+                        destination: eMailView()){
                         Text("Zmień E-mail")
                             .gradientForeground(colors:  [.purple,.blue])
-                        Spacer()
-                        Image(systemName: "chevron.right").foregroundColor(.gray)
                     }
                 }
                 

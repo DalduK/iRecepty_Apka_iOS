@@ -36,10 +36,6 @@ struct RegisterView: View {
     let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         ZStack{
             VStack {
-                Text("Zarejestruj się!")
-                    .bold()
-                    .font(.title)
-                
                 Image("Register")
                     .resizable()
                     .scaledToFit()
@@ -115,6 +111,7 @@ struct RegisterView: View {
                 .padding(.vertical,5)
             }
         }
+        .navigationBarTitle("Utwórz konto", displayMode: .inline)
         .actionSheet(isPresented: $error, content: {
             if showWrongPasswordView == true{
                       return self.wrongPassword

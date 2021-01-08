@@ -4,41 +4,47 @@
     "image": "QRCode",
     "data": "10:30 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Andrzej Melepta"
+    "lekarz": "Dr. Andrzej Melepta",
+    "wykorzystana": "Nie"
     },
     {
     "id": 1002,
     "image": "QRCode",
     "data": "11:20 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Anna Frau"
+    "lekarz": "Dr. Anna Frau",
+    "wykorzystana": "Nie"
     },
     {
     "id": 1003,
     "image": "QRCode",
     "data": "11:30 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Jerzy Wolny"
+    "lekarz": "Dr. Jerzy Wolny",
+    "wykorzystana": "Nie"
     },
     {
     "id": 1004,
     "image": "QRCode",
     "data": "14:50 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Adam Kowalski"
+    "lekarz": "Dr. Adam Kowalski",
+    "wykorzystana": "Nie"
     },
     {
     "id": 1005,
     "image": "QRCode",
     "data": "08:36 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Adrian Kowal"
+    "lekarz": "Dr. Adrian Kowal",
+    "wykorzystana": "Nie"
     },
     {
     "id": 1006,
     "image": "QRCode",
     "data": "7:45 04.12.2020",
     "recepta": "Recepta na leki",
-    "lekarz": "Dr. Mateusz Dorsz"
+    "lekarz": "Dr. Mateusz Dorsz",
+    "wykorzystana": "Nie"
     }
 ]
