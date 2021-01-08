@@ -1,0 +1,18 @@
+//
+//  InzSwiftUIAppApp.swift
+//  InzSwiftUIApp
+//
+//  Created by Przemysław Woźny on 04/12/2020.
+//
+
+import SwiftUI
+
+@main
+struct InzSwiftUIAppApp: App {
+    @StateObject var userAuth = UserAuth()
+    var body: some Scene {
+        WindowGroup {
+            ContentView().environmentObject(userAuth)
+        }
+    }
+}
