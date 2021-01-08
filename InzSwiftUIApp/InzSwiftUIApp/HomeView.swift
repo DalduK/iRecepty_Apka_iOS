@@ -17,7 +17,7 @@ struct HomeView: View {
             case featured
             case list
             case user
-            case settings
+//            case settings
         }
     var body: some View {
         TabView(selection: $selection) {
@@ -87,13 +87,13 @@ struct HomeView: View {
             
             UserView()
                 .tabItem {
-                    Label("Użytkownik", systemImage: "person.crop.circle")
+                    Label("Ustawienia", systemImage: "person.crop.circle")
             }.tag(Tab.user)
             
-            SettingsView()
-                .tabItem {
-                    Label("Ustawienia", systemImage: "wrench.and.screwdriver")
-            }.tag(Tab.settings)
+//            SettingsView()
+//                .tabItem {
+//                    Label("Ustawienia", systemImage: "wrench.and.screwdriver")
+//            }.tag(Tab.settings)
             
         }
     }
