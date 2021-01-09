@@ -49,7 +49,7 @@
 		0172E47F257A895F00ED727C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0172E482257A8E5400ED727C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0175EB2B257AB9AE007C5CF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = InzSwiftUIApp/Data.swift; sourceTree = SOURCE_ROOT; };
+		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = /Users/przemek/Documents/Inzynierka/InzSwiftUIApp/InzSwiftUIApp/InzSwiftUIApp/Models/Data.swift; sourceTree = "<absolute>"; };
 		0175EB33257AC07C007C5CF8 /* cardData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardData.json; sourceTree = "<group>"; };
 		0176652025AA199400E5A8B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
