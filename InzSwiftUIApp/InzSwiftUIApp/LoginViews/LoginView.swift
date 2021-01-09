@@ -49,7 +49,7 @@ struct LoginView: View {
             if statusCode == 200{
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-                    userAuth.setToken(token: dataJSON?["access"] as! String)
+                    userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
                     withAnimation{
                         userAuth.login()
                     }

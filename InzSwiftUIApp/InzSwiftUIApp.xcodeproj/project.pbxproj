@@ -26,6 +26,8 @@
 		0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175EB2F257ABDB4007C5CF8 /* Data.swift */; };
 		0175EB34257AC07C007C5CF8 /* cardData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0175EB33257AC07C007C5CF8 /* cardData.json */; };
 		0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176652025AA199400E5A8B3 /* ImageLoader.swift */; };
+		0176653225AA499300E5A8B3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653125AA499300E5A8B3 /* AboutView.swift */; };
+		0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653425AA4F3A00E5A8B3 /* DeleteView.swift */; };
 		01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */; };
 		01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADC257A2C2600643495 /* ContentView.swift */; };
 		01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6ADE257A2C2600643495 /* Assets.xcassets */; };
@@ -49,12 +51,14 @@
 		0172E47F257A895F00ED727C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0172E482257A8E5400ED727C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0175EB2B257AB9AE007C5CF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = /Users/przemek/Documents/Inzynierka/InzSwiftUIApp/InzSwiftUIApp/InzSwiftUIApp/Models/Data.swift; sourceTree = "<absolute>"; };
+		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0175EB33257AC07C007C5CF8 /* cardData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardData.json; sourceTree = "<group>"; };
 		0176652025AA199400E5A8B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		0176653125AA499300E5A8B3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		0176653425AA4F3A00E5A8B3 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppApp.swift; sourceTree = "<group>"; };
-		01BF6ADC257A2C2600643495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		01BF6ADC257A2C2600643495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		01BF6ADE257A2C2600643495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01BF6AE1257A2C2600643495 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01BF6AE3257A2C2600643495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				0167D1EB25A0B08700A843BD /* UserView.swift */,
 				0114F61025A88F8700297BFE /* NewPasswordView.swift */,
 				0114F61325A8EE0300297BFE /* NewData.swift */,
+				0176653125AA499300E5A8B3 /* AboutView.swift */,
+				0176653425AA4F3A00E5A8B3 /* DeleteView.swift */,
 			);
 			path = SettingViews;
 			sourceTree = "<group>";
@@ -160,12 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				0176652A25AA359300E5A8B3 /* MainViews */,
+				0176652525AA34A700E5A8B3 /* LoginViews */,
 				0176652925AA355700E5A8B3 /* SettingViews */,
 				0176652825AA353900E5A8B3 /* UnusedViews */,
 				0176652725AA352300E5A8B3 /* RowListViews */,
 				0175EB28257AB6BA007C5CF8 /* Models */,
 				0175EB29257AB6E0007C5CF8 /* Resources */,
-				0176652525AA34A700E5A8B3 /* LoginViews */,
 				01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */,
 				01BF6AE3257A2C2600643495 /* Info.plist */,
 				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
@@ -253,8 +259,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0114F61425A8EE0300297BFE /* NewData.swift in Sources */,
+				0176653225AA499300E5A8B3 /* AboutView.swift in Sources */,
 				0167D1E825A0B07200A843BD /* SettingsView.swift in Sources */,
 				0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */,
+				0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */,
 				0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */,
 				0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */,
 				0167D1EC25A0B08700A843BD /* UserView.swift in Sources */,
@@ -409,6 +417,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -431,6 +440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

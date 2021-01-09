@@ -17,7 +17,6 @@ struct ContentView: View {
                 LoginView()
             } else {
                 HomeView()
-                    .padding(.top)
                     .frame(width: geo.size.width, height: geo.size.height)
             }
         }
