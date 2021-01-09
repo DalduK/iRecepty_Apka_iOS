@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var alpha: Double = 1
     @State var blurBack: Int = 30
     @State private var selection: Tab = .featured
+    @EnvironmentObject var userAuth: UserAuth
 
         enum Tab {
             case featured
@@ -26,7 +27,7 @@ struct HomeView: View {
                     ZStack{
                         VStack {
                             HStack{
-                                Text("Witaj Przemek")
+                                Text("Witaj " + userAuth.userName)
                                     .font(.system(size:30, weight: .bold))
                                 Spacer()
                             }
@@ -53,11 +54,11 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Home")
+
+                .navigationBarTitle("Powrót")
                 .navigationBarHidden(true)
                 
             }
-            .accentColor( .white)   
             .tabItem {
                 Label("Karty", systemImage: "greetingcard.fill")
             }.tag(Tab.featured)

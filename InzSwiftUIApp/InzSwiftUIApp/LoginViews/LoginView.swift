@@ -27,7 +27,7 @@ struct LoginView: View {
         let json: [String: Any] = ["username": login,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://ce53658bbd3c.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://091b4a5646cd.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
@@ -49,7 +49,7 @@ struct LoginView: View {
             if statusCode == 200{
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-                    userAuth.setToken(token: dataJSON?["access"] as! String)
+                    userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
                     withAnimation{
                         userAuth.login()
                     }

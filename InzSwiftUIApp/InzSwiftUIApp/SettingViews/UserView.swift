@@ -76,6 +76,12 @@ struct UserView: View {
                     HStack{
                         Text("Usuń konto")
                             .gradientForeground(colors:  [.red])
+                        NavigationLink(destination:
+                                        DeleteView()) {
+                                EmptyView()
+                              }
+                              .frame(width: 0)
+                              .opacity(0)
                         Spacer()
                         Image(systemName: "trash").foregroundColor(.gray)
                     }
@@ -100,6 +106,11 @@ struct UserView: View {
                     HStack{
                         Text("O Aplikacji")
                             .gradientForeground(colors:  [.gray])
+                        NavigationLink(destination: AboutView()) {
+                                EmptyView()
+                              }
+                              .frame(width: 0)
+                              .opacity(0)
                         Spacer()
                         Image(systemName: "info.circle").foregroundColor(.gray)
                     }

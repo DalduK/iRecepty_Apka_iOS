@@ -13,10 +13,17 @@ struct CardView: View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         VStack {
-            Image(cardsData.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding()
+            ZStack{
+                Color.white.cornerRadius(15)
+            AsyncImage(url: URL(string: cardsData.image)!,
+                           placeholder: { Text("Loading ...") },
+                           image: { Image(uiImage: $0).resizable()})
+            }.aspectRatio(contentMode: .fit).padding().cornerRadius(15)
+            
+//            Image(cardsData.image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .padding()
             
             HStack {
                 VStack(alignment: .leading) {

@@ -10,6 +10,7 @@ import Combine
 class UserAuth: ObservableObject {
     @Published var isLoggeddin = false
     @Published var token: String = ""
+    @Published var userName: String = ""
     
     func logout(){
         self.isLoggeddin = false
@@ -20,8 +21,9 @@ class UserAuth: ObservableObject {
         self.isLoggeddin = true
     }
     
-    func setToken(token:String){
+    func setToken(token:String, userName:String){
         self.token = token
+        self.userName = userName
     }
     
     

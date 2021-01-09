@@ -10,20 +10,32 @@ import SwiftUI
 struct ReceptDetails: View {
     var cardDetail: Cards
     var body: some View {
+        GeometryReader{ (proxy : GeometryProxy) in
         VStack {
                     Image("Gradient")
                         .resizable()
-                        .frame(height: 260)
-                        .ignoresSafeArea()
-                        .padding(.top, -110)
-
-                    Image(cardDetail.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .frame(width: proxy.size.width, height:proxy.size.height/2.4 , alignment: .topLeading)
+                        
+//                        .padding(.top, -110)
+            ZStack{
+                Color.white
+            AsyncImage(url: URL(string: cardDetail.image)!,
+                           placeholder: { Text("Loading ...") },
+                           image: { Image(uiImage: $0).resizable()})
+            }.aspectRatio(contentMode: .fit)
                         .cornerRadius(15)
                         .shadow(radius: 7)
                         .padding(.top, -200.0)
-                        .padding()
+                .padding()
+                
+
+//                    Image(cardDetail.image)
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                        .cornerRadius(15)
+//                        .shadow(radius: 7)
+//                        .padding(.top, -200.0)
+//                        .padding()
 
                     VStack(alignment: .leading) {
                         Text(cardDetail.recepta)
@@ -46,11 +58,15 @@ struct ReceptDetails: View {
                     }
                     .padding()
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationBarTitle("Wróć do listy!", displayMode: .inline)
+        }
     }
 }
 
 struct ReceptDetails_Previews: PreviewProvider {
     static var previews: some View {
         ReceptDetails(cardDetail: cardsData[0])
+        
     }
 }
