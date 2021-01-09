@@ -74,6 +74,7 @@
 		0175EB28257AB6BA007C5CF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0176652025AA199400E5A8B3 /* ImageLoader.swift */,
 				0175EB2F257ABDB4007C5CF8 /* Data.swift */,
 				0172E476257A83CE00ED727C /* UserAuth.swift */,
 			);
@@ -86,6 +87,57 @@
 				0175EB33257AC07C007C5CF8 /* cardData.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		0176652525AA34A700E5A8B3 /* LoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				0172E479257A845700ED727C /* LoginView.swift */,
+				0172E47F257A895F00ED727C /* RegisterView.swift */,
+				0172E47C257A87A600ED727C /* PassView.swift */,
+			);
+			path = LoginViews;
+			sourceTree = "<group>";
+		};
+		0176652725AA352300E5A8B3 /* RowListViews */ = {
+			isa = PBXGroup;
+			children = (
+				0167D1D825A0792C00A843BD /* ReceptRowView.swift */,
+				0167D1DB25A07D4700A843BD /* ReceptList.swift */,
+			);
+			path = RowListViews;
+			sourceTree = "<group>";
+		};
+		0176652825AA353900E5A8B3 /* UnusedViews */ = {
+			isa = PBXGroup;
+			children = (
+				01232F46257D955B00563508 /* LoadingView.swift */,
+				013F85BD257EB76300C08E72 /* MenuView.swift */,
+			);
+			path = UnusedViews;
+			sourceTree = "<group>";
+		};
+		0176652925AA355700E5A8B3 /* SettingViews */ = {
+			isa = PBXGroup;
+			children = (
+				0167D1E725A0B07200A843BD /* SettingsView.swift */,
+				0114F61625A8F7CE00297BFE /* eMailView.swift */,
+				0167D1EB25A0B08700A843BD /* UserView.swift */,
+				0114F61025A88F8700297BFE /* NewPasswordView.swift */,
+				0114F61325A8EE0300297BFE /* NewData.swift */,
+			);
+			path = SettingViews;
+			sourceTree = "<group>";
+		};
+		0176652A25AA359300E5A8B3 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				01BF6ADC257A2C2600643495 /* ContentView.swift */,
+				0175EB2B257AB9AE007C5CF8 /* HomeView.swift */,
+				0172E482257A8E5400ED727C /* CardView.swift */,
+				0167D1E225A07EDD00A843BD /* ReceptDetails.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 		01BF6ACE257A2C2600643495 = {
@@ -107,29 +159,17 @@
 		01BF6AD9257A2C2600643495 /* InzSwiftUIApp */ = {
 			isa = PBXGroup;
 			children = (
-				0175EB29257AB6E0007C5CF8 /* Resources */,
+				0176652A25AA359300E5A8B3 /* MainViews */,
+				0176652925AA355700E5A8B3 /* SettingViews */,
+				0176652825AA353900E5A8B3 /* UnusedViews */,
+				0176652725AA352300E5A8B3 /* RowListViews */,
 				0175EB28257AB6BA007C5CF8 /* Models */,
+				0175EB29257AB6E0007C5CF8 /* Resources */,
+				0176652525AA34A700E5A8B3 /* LoginViews */,
 				01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */,
-				01BF6ADC257A2C2600643495 /* ContentView.swift */,
-				0176652025AA199400E5A8B3 /* ImageLoader.swift */,
-				01232F46257D955B00563508 /* LoadingView.swift */,
-				0175EB2B257AB9AE007C5CF8 /* HomeView.swift */,
-				0172E482257A8E5400ED727C /* CardView.swift */,
-				0172E479257A845700ED727C /* LoginView.swift */,
-				0172E47F257A895F00ED727C /* RegisterView.swift */,
-				0172E47C257A87A600ED727C /* PassView.swift */,
-				013F85BD257EB76300C08E72 /* MenuView.swift */,
-				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
 				01BF6AE3257A2C2600643495 /* Info.plist */,
-				0167D1D825A0792C00A843BD /* ReceptRowView.swift */,
-				0167D1DB25A07D4700A843BD /* ReceptList.swift */,
-				0167D1E225A07EDD00A843BD /* ReceptDetails.swift */,
-				0167D1E725A0B07200A843BD /* SettingsView.swift */,
-				0114F61625A8F7CE00297BFE /* eMailView.swift */,
-				0167D1EB25A0B08700A843BD /* UserView.swift */,
-				0114F61025A88F8700297BFE /* NewPasswordView.swift */,
+				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
 				01BF6AE0257A2C2600643495 /* Preview Content */,
-				0114F61325A8EE0300297BFE /* NewData.swift */,
 			);
 			path = InzSwiftUIApp;
 			sourceTree = "<group>";
