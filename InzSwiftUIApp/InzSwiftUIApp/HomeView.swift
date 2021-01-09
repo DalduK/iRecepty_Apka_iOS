@@ -53,11 +53,10 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Home")
+                .navigationBarTitle("Powrót")
                 .navigationBarHidden(true)
                 
             }
-            .accentColor( .white)   
             .tabItem {
                 Label("Karty", systemImage: "greetingcard.fill")
             }.tag(Tab.featured)

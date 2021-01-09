@@ -25,6 +25,7 @@
 		0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175EB2B257AB9AE007C5CF8 /* HomeView.swift */; };
 		0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175EB2F257ABDB4007C5CF8 /* Data.swift */; };
 		0175EB34257AC07C007C5CF8 /* cardData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0175EB33257AC07C007C5CF8 /* cardData.json */; };
+		0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176652025AA199400E5A8B3 /* ImageLoader.swift */; };
 		01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */; };
 		01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADC257A2C2600643495 /* ContentView.swift */; };
 		01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6ADE257A2C2600643495 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		0175EB2B257AB9AE007C5CF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.swift; path = InzSwiftUIApp/Data.swift; sourceTree = SOURCE_ROOT; };
 		0175EB33257AC07C007C5CF8 /* cardData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardData.json; sourceTree = "<group>"; };
+		0176652025AA199400E5A8B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppApp.swift; sourceTree = "<group>"; };
 		01BF6ADC257A2C2600643495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				0175EB28257AB6BA007C5CF8 /* Models */,
 				01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */,
 				01BF6ADC257A2C2600643495 /* ContentView.swift */,
+				0176652025AA199400E5A8B3 /* ImageLoader.swift */,
 				01232F46257D955B00563508 /* LoadingView.swift */,
 				0175EB2B257AB9AE007C5CF8 /* HomeView.swift */,
 				0172E482257A8E5400ED727C /* CardView.swift */,
@@ -211,6 +214,7 @@
 			files = (
 				0114F61425A8EE0300297BFE /* NewData.swift in Sources */,
 				0167D1E825A0B07200A843BD /* SettingsView.swift in Sources */,
+				0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */,
 				0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */,
 				0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */,
 				0167D1EC25A0B08700A843BD /* UserView.swift in Sources */,

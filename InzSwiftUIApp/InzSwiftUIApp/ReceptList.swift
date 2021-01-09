@@ -20,7 +20,7 @@ struct ReceptList: View {
                     )
                 } 
             }.navigationTitle("Recepty")
-        }.accentColor( .white)
+        }
     }
 }
         

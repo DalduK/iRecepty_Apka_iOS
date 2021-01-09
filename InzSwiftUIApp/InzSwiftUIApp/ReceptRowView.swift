@@ -14,9 +14,16 @@ struct ReceptRowView: View {
     var lekarz: String
     var body: some View {
         HStack {
-            Image(image)
-                .resizable()
-                .frame(width: 70, height: 70)
+            ZStack{
+                Color.white
+            AsyncImage(url: URL(string: image)!,
+                           placeholder: { Text("Loading ...") },
+                           image: { Image(uiImage: $0).resizable()})
+            }.frame(width: 70.0, height: 70.0)
+            .cornerRadius(2)
+//            Image(image)
+//                .resizable()
+//                .frame(width: 70, height: 70)
             VStack{
                 HStack {
                 Text(data)
