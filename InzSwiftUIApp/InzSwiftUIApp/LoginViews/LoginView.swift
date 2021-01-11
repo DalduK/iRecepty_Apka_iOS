@@ -17,10 +17,10 @@ struct LoginView: View {
     @State var password: String = ""
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
-    @State var logged: Bool = false
+    @State var errorAction: Bool = false
     
-    func setLog(){
-        
+    var notLogged: ActionSheet {
+        ActionSheet(title: Text("Błąd Logowania"), message: Text("Spróbuj ponownie"), buttons: [.cancel()])
     }
     
     func login(login: String, password: String){
@@ -47,6 +47,7 @@ struct LoginView: View {
             }
             print(statusCode)
             if statusCode == 200{
+                errorAction = false
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
                     userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
@@ -54,9 +55,8 @@ struct LoginView: View {
                         userAuth.login()
                     }
                 }
-                logged = true
             }else {
-                logged = false
+                errorAction = true
             }
             
         }
@@ -131,6 +131,9 @@ struct LoginView: View {
                 }
             }
             .navigationTitle("Login")
+            .actionSheet(isPresented: $errorAction, content:{
+                            return self.notLogged
+            })
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
