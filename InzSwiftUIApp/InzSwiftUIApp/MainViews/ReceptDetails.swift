@@ -15,27 +15,22 @@ struct ReceptDetails: View {
                     Image("Gradient")
                         .resizable()
                         .frame(width: proxy.size.width, height:proxy.size.height/2.4 , alignment: .topLeading)
-                        
-//                        .padding(.top, -110)
             ZStack{
                 Color.white
-            AsyncImage(url: URL(string: cardDetail.image)!,
-                           placeholder: { Text("Loading ...") },
-                           image: { Image(uiImage: $0).resizable()})
+                Image(uiImage: generateQRCode(from: cardDetail.image))
+                    .interpolation(.none)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.all, 30.0)
+//            AsyncImage(url: URL(string: cardDetail.image)!,
+//                           placeholder: { Text("Loading ...") },
+//                           image: { Image(uiImage: $0).resizable()})
             }.aspectRatio(contentMode: .fit)
                         .cornerRadius(15)
                         .shadow(radius: 7)
                         .padding(.top, -200.0)
                 .padding()
                 
-
-//                    Image(cardDetail.image)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .cornerRadius(15)
-//                        .shadow(radius: 7)
-//                        .padding(.top, -200.0)
-//                        .padding()
 
                     VStack(alignment: .leading) {
                         Text(cardDetail.recepta)

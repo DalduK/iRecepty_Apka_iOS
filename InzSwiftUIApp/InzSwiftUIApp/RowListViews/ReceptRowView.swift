@@ -16,14 +16,12 @@ struct ReceptRowView: View {
         HStack {
             ZStack{
                 Color.white
-            AsyncImage(url: URL(string: image)!,
-                           placeholder: { Text("Loading ...") },
-                           image: { Image(uiImage: $0).resizable()})
+                Image(uiImage: generateQRCode(from: image))
+                    .interpolation(.none)
+                    .resizable()
+                    .scaledToFit()
             }.frame(width: 70.0, height: 70.0)
             .cornerRadius(2)
-//            Image(image)
-//                .resizable()
-//                .frame(width: 70, height: 70)
             VStack{
                 HStack {
                 Text(data)

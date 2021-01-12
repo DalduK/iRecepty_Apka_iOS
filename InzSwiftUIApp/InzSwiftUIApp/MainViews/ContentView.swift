@@ -12,13 +12,10 @@ struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
     @State var showMenu = false
     var body: some View {
-        GeometryReader { geo in
-            if !userAuth.isLoggeddin {
-                LoginView()
-            } else {
-                HomeView()
-                    .frame(width: geo.size.width, height: geo.size.height)
-            }
+        if !userAuth.isLoggeddin {
+            LoginView()
+        } else {
+            HomeView()
         }
     }
 }
