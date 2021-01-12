@@ -32,7 +32,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>doc.text.fill</string>
+		<string>smal</string>
 		<key>UIColorName</key>
 		<string>Color</string>
 	</dict>

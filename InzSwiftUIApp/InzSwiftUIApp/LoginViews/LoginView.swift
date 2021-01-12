@@ -18,6 +18,7 @@ struct LoginView: View {
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
     @State var errorAction: Bool = false
+    @State var loadingAction: Bool = false
     
     var notLogged: ActionSheet {
         ActionSheet(title: Text("Błąd Logowania"), message: Text("Spróbuj ponownie"), buttons: [.cancel()])
@@ -27,7 +28,7 @@ struct LoginView: View {
         let json: [String: Any] = ["username": login,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://091b4a5646cd.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://e40cae32ad7c.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
@@ -56,6 +57,7 @@ struct LoginView: View {
                     }
                 }
             }else {
+                loadingAction = false
                 errorAction = true
             }
             
@@ -118,6 +120,7 @@ struct LoginView: View {
                     
                     ZStack{
                         Button(action: {
+                            loadingAction = true
                             login(login: userName, password: password)
                         }){
                             Text("Zaloguj się")
@@ -129,11 +132,18 @@ struct LoginView: View {
                     }
                     .padding(.top,5)
                 }
+                if loadingAction == true{
+                    LoadingView()
+                }
             }
             .navigationTitle("Login")
             .actionSheet(isPresented: $errorAction, content:{
                             return self.notLogged
             })
+            .onAppear(perform: {
+                ProgressView("Ładowanie")
+            })
+            .progressViewStyle(CircularProgressViewStyle())
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
