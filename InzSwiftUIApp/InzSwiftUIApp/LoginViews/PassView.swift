@@ -9,8 +9,14 @@ import SwiftUI
 
 struct PassView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var userName: String = ""
-    @State var password: String = ""
+    @State var email: String = ""
+    @State var isValid: Bool = false
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return !emailPred.evaluate(with: email)
+    }
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
@@ -25,7 +31,7 @@ struct PassView: View {
                 
                 HStack {
                     Image(systemName: "envelope").foregroundColor(.gray)
-                    TextField("Email",text:$userName).textContentType(.emailAddress)
+                    TextField("Email",text:$email).textContentType(.emailAddress).keyboardType(.emailAddress)
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .overlay(
@@ -36,7 +42,7 @@ struct PassView: View {
                 ZStack{
                     Button(action: {
                         withAnimation {
-                            
+                            isValid = isValidEmail(email)
                     }
                     }){
                         Text("Zaloguj się")
@@ -50,9 +56,12 @@ struct PassView: View {
                 
                 Spacer()
             }
-        }
+        }.actionSheet(isPresented: $isValid, content:{
+                    ActionSheet(title: Text("Format maila nie jest poprawny"), message: Text("Ponownie podaj mail"), buttons: [.cancel()])
+        })
         .navigationBarTitle("Przypomnij hasło", displayMode: .inline)
         .padding(.top, 10)
+        
     }
     
 }

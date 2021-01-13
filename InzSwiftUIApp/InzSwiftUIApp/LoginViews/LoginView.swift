@@ -28,7 +28,7 @@ struct LoginView: View {
         let json: [String: Any] = ["username": login,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://e40cae32ad7c.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://a021af2c8aa2.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
