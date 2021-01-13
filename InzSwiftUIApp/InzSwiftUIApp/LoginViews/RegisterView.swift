@@ -12,23 +12,26 @@ struct RegisterView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var password2: String = ""
-    @State var showNoPasswordView = false
-    @State var showWrongPasswordView = false
+    @State var errorname: String = ""
+    @State var errordetails: String = ""
     @State var error = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var userAuth: UserAuth
     @State private var rules = false
     
     var noPassword: ActionSheet {
-        ActionSheet(title: Text("Puste Hasło"), message: Text("Podaj poprawne hasło"), buttons: [.cancel()])
-    }
-    
-    var wrongPassword: ActionSheet {
-        ActionSheet(title: Text("Hasła są różne"), message: Text("Podaj poprawne hasło"), buttons: [.cancel()])
+        ActionSheet(title: Text(errorname), message: Text(errordetails), buttons: [.cancel()])
     }
     
     var regulations: ActionSheet {
         ActionSheet(title: Text("Potwierdz regulamin !"), message: Text("Potwierdz regulamin aby utworzyc konto"), buttons: [.cancel()])
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return !emailPred.evaluate(with: email)
     }
     
     var body: some View {
@@ -87,18 +90,39 @@ struct RegisterView: View {
                 
                 ZStack{
                     Button(action: {
-                        if (password != "" || password2 != ""){
-                            if password == password2{
-                                print(password2)
-                                self.mode.wrappedValue.dismiss()
+                        if userName == ""{
+                            errorname = "Nazwa użytkownika jest pusta"
+                            errordetails = "Podaj nazwę użytkownika"
+                            self.error.toggle()
+                        }
+                        else{
+                            if email == ""{
+                                errorname = "Adres email pusty"
+                                errordetails = "Podaj poprawny adres"
+                                self.error.toggle()
+                            }
+                            else if isValidEmail(email) == true {
+                                errorname = "Adres email niepoprawny"
+                                errordetails = "Podaj poprawny adres"
+                                self.error.toggle()
                             }
                             else{
-                                self.showWrongPasswordView.toggle()
-                                self.error.toggle()
-                            }}
-                        else{
-                            self.error.toggle()
-                            self.showNoPasswordView.toggle()
+                                if (password != "" || password2 != ""){
+                                    if password == password2{
+                                        print(password2)
+                                        self.mode.wrappedValue.dismiss()
+                                    }
+                                    else{
+                                        errorname = "Hasła są różne"
+                                        errordetails = "Podaj poprawne hasło"
+                                        self.error.toggle()
+                                    }}
+                                else{
+                                    errorname = "Puste hasło"
+                                    errordetails = "Podaj poprawne hasło"
+                                    self.error.toggle()
+                                }
+                            }
                         }
                     }){
                         Text("Zarejestruj się")
@@ -113,11 +137,7 @@ struct RegisterView: View {
         }
         .navigationBarTitle("Utwórz konto", displayMode: .inline)
         .actionSheet(isPresented: $error, content: {
-            if showWrongPasswordView == true{
-                      return self.wrongPassword
-            }else{
                 return self.noPassword
-            }
         })
         .padding(.horizontal)
     }

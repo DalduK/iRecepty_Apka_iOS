@@ -17,17 +17,18 @@ struct LoginView: View {
     @State var password: String = ""
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
-    @State var logged: Bool = false
+    @State var errorAction: Bool = false
+    @State var loadingAction: Bool = false
     
-    func setLog(){
-        
+    var notLogged: ActionSheet {
+        ActionSheet(title: Text("Błąd Logowania"), message: Text("Spróbuj ponownie"), buttons: [.cancel()])
     }
     
     func login(login: String, password: String){
         let json: [String: Any] = ["username": login,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://091b4a5646cd.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://a021af2c8aa2.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
@@ -47,6 +48,7 @@ struct LoginView: View {
             }
             print(statusCode)
             if statusCode == 200{
+                errorAction = false
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
                     userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
@@ -54,9 +56,9 @@ struct LoginView: View {
                         userAuth.login()
                     }
                 }
-                logged = true
             }else {
-                logged = false
+                loadingAction = false
+                errorAction = true
             }
             
         }
@@ -118,6 +120,7 @@ struct LoginView: View {
                     
                     ZStack{
                         Button(action: {
+                            loadingAction = true
                             login(login: userName, password: password)
                         }){
                             Text("Zaloguj się")
@@ -129,8 +132,18 @@ struct LoginView: View {
                     }
                     .padding(.top,5)
                 }
+                if loadingAction == true{
+                    LoadingView()
+                }
             }
             .navigationTitle("Login")
+            .actionSheet(isPresented: $errorAction, content:{
+                            return self.notLogged
+            })
+            .onAppear(perform: {
+                ProgressView("Ładowanie")
+            })
+            .progressViewStyle(CircularProgressViewStyle())
             .navigationBarHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
