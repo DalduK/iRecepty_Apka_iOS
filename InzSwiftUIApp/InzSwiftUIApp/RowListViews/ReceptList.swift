@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct ReceptList: View {
+    @State private var showUsed = false
+    var filteredCards: [Cards] {
+        cardsData.filter { cards in
+            (showUsed || cards.wykorzystana)
+        }
+    }
     var body: some View {
         NavigationView{
-            List(cardsData){ cards in
+            
+            List{
+                Toggle("pokaż wykorzystane", isOn: $showUsed)
+                ForEach(filteredCards){cards in
                 NavigationLink(destination: ReceptDetails(cardDetail: cards)){
                     ReceptRowView(
                         image: cards.image,
                         data: cards.data,
                         recepta: cards.recepta,
-                        lekarz: cards.lekarz
+                        lekarz: cards.lekarz,
+                        wykorzystana: cards.wykorzystana
                     )
-                } 
+                }
+                }
             }.navigationTitle("Recepty")
         }
     }

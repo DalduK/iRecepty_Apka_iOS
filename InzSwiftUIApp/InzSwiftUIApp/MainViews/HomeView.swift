@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var alpha: Double = 1
     @State var blurBack: Int = 30
     @State private var selection: Tab = .featured
+    @State private var showUsed = false
     @EnvironmentObject var userAuth: UserAuth
 
         enum Tab {
@@ -19,45 +20,50 @@ struct HomeView: View {
             case list
             case user
         }
+    var filteredCards: [Cards] {
+        cardsData.filter { cards in
+            (showUsed || cards.wykorzystana)
+        }
+    }
+    
     var body: some View {
         TabView(selection: $selection) {
             NavigationView{
-            GeometryReader { gx in
-                ScrollView(.vertical, showsIndicators: false) {
-                    ZStack{
-                        VStack {
-                            HStack{
-                                Text("Witaj " + userAuth.userName)
-                                    .font(.system(size:30, weight: .bold))
-                                Spacer()
-                            }
-                            .padding(.horizontal)
-                            .padding(.top, 10)
+                GeometryReader { gx in
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ZStack{
+                            VStack {
+                                HStack{
+                                    Text("Witaj " + userAuth.userName)
+                                        .font(.system(size:30, weight: .bold))
+                                    Spacer()
+                                    Toggle("pokaż wykorzystane", isOn: $showUsed)
+                                        .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
+                                }
+                                .padding(.horizontal)
+                                .padding(.top, 10)
                                 ScrollView (.horizontal, showsIndicators: true){
                                     HStack(spacing: 20)
                                     {
-                                        ForEach(cardsData) { cards in
-                                            NavigationLink(destination: ReceptDetails(cardDetail: cards)){
-                                                GeometryReader { geometry in
-                                                    CardView(cardsData: cards)
-                                                    .rotation3DEffect(.degrees(0), axis: (x: 40, y: 0, z: 0))
-                                                }
-                                                .padding()
-                                                .frame(width: gx.size.width, height: gx.size.height * 0.8)
-                                            }
+                                        ForEach(filteredCards) { cards in
+                                                NavigationLink(destination: ReceptDetails(cardDetail: cards)){
+                                                    GeometryReader { geometry in
+                                                        CardView(cardsData: cards)
+                                                        .rotation3DEffect(.degrees(0), axis: (x: 40, y: 0, z: 0))
+                                                    }
+                                                    .padding()
+                                                    .frame(width: gx.size.width, height: gx.size.height * 0.8)
                                             
+                                            }
                                         }
-                                        
                                     }
                                 }
                             }
                         }
                     }
                 }
-
                 .navigationBarTitle("Powrót")
                 .navigationBarHidden(true)
-                
             }
             .tabItem {
                 Label("Karty", systemImage: "greetingcard.fill")

@@ -12,6 +12,7 @@ struct ReceptRowView: View {
     var data: String
     var recepta: String
     var lekarz: String
+    var wykorzystana:Bool
     var body: some View {
         HStack {
             ZStack{
@@ -30,6 +31,11 @@ struct ReceptRowView: View {
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.leading)
                 Spacer()
+                    Text(wykorzystana ? "Nowa": "Wykorzystana")
+                        .font(.subheadline)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.light/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(wykorzystana ? .blue : .red)
+                        .multilineTextAlignment(.leading)
                 }
                     
                 HStack {
@@ -58,6 +64,6 @@ struct ReceptRowView_Previews: PreviewProvider {
         var data = "Data"
         var recepta = "Recepta"
         var lekarz = "Dr. Andrzej Wolny"
-        ReceptRowView(image: image, data: data, recepta: recepta, lekarz: lekarz)
+        ReceptRowView(image: image, data: data, recepta: recepta, lekarz: lekarz, wykorzystana: true)
     }
 }

@@ -6,11 +6,14 @@
 //
 
 import Combine
+import SwiftUI
 
 class UserAuth: ObservableObject {
     @Published var isLoggeddin = false
     @Published var token: String = ""
     @Published var userName: String = ""
+    @State var appearance = UserDefaults.standard
+    
     
     func logout(){
         self.isLoggeddin = false

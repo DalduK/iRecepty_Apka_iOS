@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
+//    @AppStorage("Mode") private var isDarkMode = 0
     @EnvironmentObject var userAuth: UserAuth
     var body: some View {
         NavigationView{
@@ -71,6 +72,14 @@ struct UserView: View {
                             .gradientForeground(colors:  [.purple,.blue])
                     }
                 }
+                
+//                Section{
+//                    Picker("Kolorystyka", selection: $isDarkMode){
+//                        Text("Systemowy (Uwaga restart aplikacji)").tag(0)
+//                        Text("Ciemny").tag(1)
+//                        Text("Jasny").tag(2)
+//                    }
+//                }
                 
                 Section {
                     HStack{
