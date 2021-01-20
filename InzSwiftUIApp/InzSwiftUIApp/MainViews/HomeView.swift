@@ -37,8 +37,32 @@ struct HomeView: View {
                                     Text("Witaj " + userAuth.userName)
                                         .font(.system(size:30, weight: .bold))
                                     Spacer()
-                                    Toggle("pokaż wykorzystane", isOn: $showUsed)
-                                        .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
+                                    Menu {
+                                        Button(action: {
+                                            // change country setting
+                                        }) {
+                                            Text("Nowe")
+                                            Image(systemName: "globe")
+                                        }
+
+                                        Button(action: {
+                                            // enable geolocation
+                                        }) {
+                                            Text("Wykorzystane")
+                                            Image(systemName: "location.circle")
+                                        }
+                                        
+                                        Button(action: {
+                                            // enable geolocation
+                                        }) {
+                                            Text("Wszystkie")
+                                            Image(systemName: "location.circle")
+                                        }
+                                    } label: {
+                                        Image(systemName: "ellipsis.circle")
+                                            .resizable()
+                                            .frame(width: 25.0, height: 25.0)
+                                    }
                                 }
                                 .padding(.horizontal)
                                 .padding(.top, 10)

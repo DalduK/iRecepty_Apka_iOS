@@ -18,19 +18,54 @@ struct ReceptList: View {
         NavigationView{
             
             List{
-                Toggle("pokaż wykorzystane", isOn: $showUsed)
-                ForEach(filteredCards){cards in
-                NavigationLink(destination: ReceptDetails(cardDetail: cards)){
-                    ReceptRowView(
-                        image: cards.image,
-                        data: cards.data,
-                        recepta: cards.recepta,
-                        lekarz: cards.lekarz,
-                        wykorzystana: cards.wykorzystana
-                    )
+                Section{
+                    Menu {
+                        Button(action: {
+                            // change country setting
+                        }) {
+                            Text("Nowe")
+                            Image(systemName: "globe")
+                        }
+
+                        Button(action: {
+                            // enable geolocation
+                        }) {
+                            Text("Wykorzystane")
+                            Image(systemName: "location.circle")
+                        }
+                        
+                        Button(action: {
+                            // enable geolocation
+                        }) {
+                            Text("Wszystkie")
+                            Image(systemName: "location.circle")
+                        }
+                    } label: {
+                        Text("Wybierz recepty")
+                        Spacer()
+                        Image(systemName: "ellipsis.circle")
+                            .resizable()
+                            .frame(width: 25.0, height: 25.0)
+                            .accentColor(.gray)
+                    }
                 }
+                Section{
+                    ForEach(filteredCards){cards in
+                        NavigationLink(destination: ReceptDetails(cardDetail: cards)){
+                            ReceptRowView(
+                                image: cards.image,
+                                data: cards.data,
+                                recepta: cards.recepta,
+                                lekarz: cards.lekarz,
+                                wykorzystana: cards.wykorzystana
+                            )
+                        }
+                    }
                 }
-            }.navigationTitle("Recepty")
+            }
+            .listStyle(InsetGroupedListStyle())
+            .environment(\.horizontalSizeClass, .regular)
+            .navigationTitle("Recepty")
         }
     }
 }

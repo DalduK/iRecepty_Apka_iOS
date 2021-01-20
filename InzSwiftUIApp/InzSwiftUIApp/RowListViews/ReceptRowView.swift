@@ -31,11 +31,11 @@ struct ReceptRowView: View {
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.leading)
                 Spacer()
-                    Text(wykorzystana ? "Nowa": "Wykorzystana")
-                        .font(.subheadline)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.light/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(wykorzystana ? .blue : .red)
-                        .multilineTextAlignment(.leading)
+//                    Text(wykorzystana ? "Nowa": "Wykorzystana")
+//                        .font(.subheadline)
+//                        .fontWeight(/*@START_MENU_TOKEN@*/.light/*@END_MENU_TOKEN@*/)
+//                        .foregroundColor(wykorzystana ? .blue : .red)
+//                        .multilineTextAlignment(.leading)
                 }
                     
                 HStack {

@@ -33,7 +33,18 @@
 		01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADC257A2C2600643495 /* ContentView.swift */; };
 		01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6ADE257A2C2600643495 /* Assets.xcassets */; };
 		01BF6AE2257A2C2600643495 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6AE1257A2C2600643495 /* Preview Assets.xcassets */; };
+		01F7AED825B6333000B1A5ED /* InzSwiftUIAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F7AED725B6333000B1A5ED /* InzSwiftUIAppUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01F7AEDA25B6333000B1A5ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01BF6ACF257A2C2600643495 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01BF6AD6257A2C2600643495;
+			remoteInfo = InzSwiftUIApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0114F61025A88F8700297BFE /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
@@ -64,10 +75,20 @@
 		01BF6ADE257A2C2600643495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01BF6AE1257A2C2600643495 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		01BF6AE3257A2C2600643495 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01F7AED525B6333000B1A5ED /* InzSwiftUIAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InzSwiftUIAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01F7AED725B6333000B1A5ED /* InzSwiftUIAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppUITests.swift; sourceTree = "<group>"; };
+		01F7AED925B6333000B1A5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		01BF6AD4257A2C2600643495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01F7AED225B6333000B1A5ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -153,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				01BF6AD9257A2C2600643495 /* InzSwiftUIApp */,
+				01F7AED625B6333000B1A5ED /* InzSwiftUIAppUITests */,
 				01BF6AD8257A2C2600643495 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */,
+				01F7AED525B6333000B1A5ED /* InzSwiftUIAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +214,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		01F7AED625B6333000B1A5ED /* InzSwiftUIAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				01F7AED725B6333000B1A5ED /* InzSwiftUIAppUITests.swift */,
+				01F7AED925B6333000B1A5ED /* Info.plist */,
+			);
+			path = InzSwiftUIAppUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,17 +243,39 @@
 			productReference = 01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		01F7AED425B6333000B1A5ED /* InzSwiftUIAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01F7AEDE25B6333000B1A5ED /* Build configuration list for PBXNativeTarget "InzSwiftUIAppUITests" */;
+			buildPhases = (
+				01F7AED125B6333000B1A5ED /* Sources */,
+				01F7AED225B6333000B1A5ED /* Frameworks */,
+				01F7AED325B6333000B1A5ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01F7AEDB25B6333000B1A5ED /* PBXTargetDependency */,
+			);
+			name = InzSwiftUIAppUITests;
+			productName = InzSwiftUIAppUITests;
+			productReference = 01F7AED525B6333000B1A5ED /* InzSwiftUIAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		01BF6ACF257A2C2600643495 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					01BF6AD6257A2C2600643495 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					01F7AED425B6333000B1A5ED = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 01BF6AD6257A2C2600643495;
 					};
 				};
 			};
@@ -239,6 +293,7 @@
 			projectRoot = "";
 			targets = (
 				01BF6AD6257A2C2600643495 /* InzSwiftUIApp */,
+				01F7AED425B6333000B1A5ED /* InzSwiftUIAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,6 +306,13 @@
 				01BF6AE2257A2C2600643495 /* Preview Assets.xcassets in Resources */,
 				01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */,
 				0175EB34257AC07C007C5CF8 /* cardData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01F7AED325B6333000B1A5ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +349,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01F7AED125B6333000B1A5ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01F7AED825B6333000B1A5ED /* InzSwiftUIAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01F7AEDB25B6333000B1A5ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01BF6AD6257A2C2600643495 /* InzSwiftUIApp */;
+			targetProxy = 01F7AEDA25B6333000B1A5ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		01BF6AE4257A2C2600643495 /* Debug */ = {
@@ -452,6 +530,46 @@
 			};
 			name = Release;
 		};
+		01F7AEDC25B6333000B1A5ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2QYS83JR9;
+				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InzSwiftUIApp;
+			};
+			name = Debug;
+		};
+		01F7AEDD25B6333000B1A5ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J2QYS83JR9;
+				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = InzSwiftUIApp;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -469,6 +587,15 @@
 			buildConfigurations = (
 				01BF6AE7257A2C2600643495 /* Debug */,
 				01BF6AE8257A2C2600643495 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01F7AEDE25B6333000B1A5ED /* Build configuration list for PBXNativeTarget "InzSwiftUIAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01F7AEDC25B6333000B1A5ED /* Debug */,
+				01F7AEDD25B6333000B1A5ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

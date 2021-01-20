@@ -28,7 +28,7 @@ struct LoginView: View {
         let json: [String: Any] = ["username": login,
                                    "password": password]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://fc8cf4e5077d.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https:/31816a3ddc2b.ngrok.io/api/token/") else {
             print("Invalid URL")
             return
         }
@@ -139,9 +139,6 @@ struct LoginView: View {
             .navigationTitle("Login")
             .actionSheet(isPresented: $errorAction, content:{
                             return self.notLogged
-            })
-            .onAppear(perform: {
-                ProgressView("Ładowanie")
             })
             .progressViewStyle(CircularProgressViewStyle())
             .navigationBarHidden(true)

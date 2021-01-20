@@ -42,10 +42,10 @@ struct UserView: View {
                         Text("07/02/1998")
                     }
                     HStack{
-                        Text("Nazwa użytkownika")
+                        Text("Pesel")
                             .foregroundColor(Color.gray)
                         Spacer()
-                        Text("Pesel")
+                        Text("12345678901")
                     }
                     HStack{
                         Text("Email")
