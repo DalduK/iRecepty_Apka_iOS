@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewData: View {
-    @State var userName: String = ""
+    @State private var userName: String = ""
     @State private var date = Date()
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
@@ -144,6 +144,7 @@ struct NewData: View {
                 }
 
             }
+            .padding(.horizontal, -5)
             .navigationBarTitle("Dane użytkownika")
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)

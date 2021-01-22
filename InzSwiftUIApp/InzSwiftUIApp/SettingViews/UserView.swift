@@ -126,6 +126,7 @@ struct UserView: View {
                 }
 
             }
+            .padding(.horizontal, -5)
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Ustawienia")

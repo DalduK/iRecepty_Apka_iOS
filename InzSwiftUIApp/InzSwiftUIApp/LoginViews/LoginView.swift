@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 struct Login: Codable {
     var refresh: String
@@ -13,8 +14,8 @@ struct Login: Codable {
 }
 
 struct LoginView: View {
-    @State var userName: String = ""
-    @State var password: String = ""
+    @State private var userName: String = ""
+    @State private var password: String = ""
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
     @State var errorAction: Bool = false
@@ -25,10 +26,12 @@ struct LoginView: View {
     }
     
     func login(login: String, password: String){
-        let json: [String: Any] = ["username": login,
-                                   "password": password]
+        let pass = SHA256.hash(data: Data(password.utf8))
+        let hashString = pass.compactMap { String(format: "%02x", $0) }.joined()
+        let json: [String: Any] = ["login": login,
+                                   "password": hashString]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https:/31816a3ddc2b.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/login") else {
             print("Invalid URL")
             return
         }
@@ -46,12 +49,13 @@ struct LoginView: View {
             if let httpResponse = response as? HTTPURLResponse {
                 statusCode = httpResponse.statusCode
             }
-            print(statusCode)
+            print("StatusCode: \(statusCode)")
             if statusCode == 200{
                 errorAction = false
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-                    userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
+                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
+                    print(userAuth.token)
                     withAnimation{
                         userAuth.login()
                     }
