@@ -88,7 +88,7 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "person").foregroundColor(.gray)
-                        TextField("Email",text:$userName).autocapitalization(.none)
+                        TextField("Nazwa użytkownika",text:$userName).autocapitalization(.none)
                     }
                     .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(

@@ -24,21 +24,21 @@ struct ReceptList: View {
                             // change country setting
                         }) {
                             Text("Nowe")
-                            Image(systemName: "globe")
+                            Image(systemName: "arrow.up.bin")
                         }
 
                         Button(action: {
                             // enable geolocation
                         }) {
                             Text("Wykorzystane")
-                            Image(systemName: "location.circle")
+                            Image(systemName: "xmark.bin")
                         }
                         
                         Button(action: {
                             // enable geolocation
                         }) {
                             Text("Wszystkie")
-                            Image(systemName: "location.circle")
+                            Image(systemName: "archivebox")
                         }
                     } label: {
                         Text("Wybierz recepty")
