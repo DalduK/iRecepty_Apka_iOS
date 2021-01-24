@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 
-let cardsData: [Cards] = load("cardData.json")
+var cardsData: [Cards] = load("cardData.json")
 
 struct Cards: Hashable, Codable, Identifiable {
     var id: Int
@@ -16,7 +16,7 @@ struct Cards: Hashable, Codable, Identifiable {
     var data: String
     var recepta: String
     var lekarz: String
-    var wykorzystana: String
+    var wykorzystana: Bool
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

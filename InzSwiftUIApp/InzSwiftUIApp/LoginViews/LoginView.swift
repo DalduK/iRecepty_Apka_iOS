@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 struct Login: Codable {
     var refresh: String
@@ -13,8 +14,8 @@ struct Login: Codable {
 }
 
 struct LoginView: View {
-    @State var userName: String = ""
-    @State var password: String = ""
+    @State private var userName: String = ""
+    @State private var password: String = ""
     @State var isShowing: Bool = true
     @EnvironmentObject var userAuth: UserAuth
     @State var errorAction: Bool = false
@@ -25,10 +26,12 @@ struct LoginView: View {
     }
     
     func login(login: String, password: String){
-        let json: [String: Any] = ["username": login,
-                                   "password": password]
+        let pass = SHA256.hash(data: Data(password.utf8))
+        let hashString = pass.compactMap { String(format: "%02x", $0) }.joined()
+        let json: [String: Any] = ["login": login,
+                                   "password": hashString]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        guard let url = URL(string: "https://a021af2c8aa2.ngrok.io/api/token/") else {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/login") else {
             print("Invalid URL")
             return
         }
@@ -46,12 +49,13 @@ struct LoginView: View {
             if let httpResponse = response as? HTTPURLResponse {
                 statusCode = httpResponse.statusCode
             }
-            print(statusCode)
+            print("StatusCode: \(statusCode)")
             if statusCode == 200{
                 errorAction = false
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-                    userAuth.setToken(token: dataJSON?["access"] as! String, userName: userName)
+                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
+                    print(userAuth.token)
                     withAnimation{
                         userAuth.login()
                     }
@@ -84,7 +88,7 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "person").foregroundColor(.gray)
-                        TextField("Email",text:$userName).autocapitalization(.none)
+                        TextField("Nazwa użytkownika",text:$userName).autocapitalization(.none)
                     }
                     .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(
@@ -139,9 +143,6 @@ struct LoginView: View {
             .navigationTitle("Login")
             .actionSheet(isPresented: $errorAction, content:{
                             return self.notLogged
-            })
-            .onAppear(perform: {
-                ProgressView("Ładowanie")
             })
             .progressViewStyle(CircularProgressViewStyle())
             .navigationBarHidden(true)

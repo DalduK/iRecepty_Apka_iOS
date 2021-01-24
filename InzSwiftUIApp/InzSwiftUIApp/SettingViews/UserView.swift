@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserView: View {
+//    @AppStorage("Mode") private var isDarkMode = 0
     @EnvironmentObject var userAuth: UserAuth
     var body: some View {
         NavigationView{
@@ -41,10 +42,10 @@ struct UserView: View {
                         Text("07/02/1998")
                     }
                     HStack{
-                        Text("Nazwa użytkownika")
+                        Text("Pesel")
                             .foregroundColor(Color.gray)
                         Spacer()
-                        Text("Pesel")
+                        Text("12345678901")
                     }
                     HStack{
                         Text("Email")
@@ -71,6 +72,14 @@ struct UserView: View {
                             .gradientForeground(colors:  [.purple,.blue])
                     }
                 }
+                
+//                Section{
+//                    Picker("Kolorystyka", selection: $isDarkMode){
+//                        Text("Systemowy (Uwaga restart aplikacji)").tag(0)
+//                        Text("Ciemny").tag(1)
+//                        Text("Jasny").tag(2)
+//                    }
+//                }
                 
                 Section {
                     HStack{
@@ -117,6 +126,7 @@ struct UserView: View {
                 }
 
             }
+            .padding(.horizontal, -5)
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Ustawienia")

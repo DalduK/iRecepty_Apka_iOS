@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewData: View {
-    @State var userName: String = ""
+    @State private var userName: String = ""
     @State private var date = Date()
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
@@ -122,28 +122,9 @@ struct NewData: View {
                             }
                     }
                 }
-                
-                Section {
-                    Text("Data urodzenia")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                    HStack{
-                        DatePicker(selection: $date, in: ...Date(), displayedComponents: .date) {
-                                        Text("Wybierz datę")
-                                    }
-                        Button(action: {
-                            print(date)
-                        }){
-                            Image(systemName: "chevron.right").foregroundColor(.white)
-                                .padding(.init(top: 12, leading: 12, bottom: 13, trailing: 12))
-                                .background(gradient)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    }
-                }
 
             }
+            .padding(.horizontal, -5)
             .navigationBarTitle("Dane użytkownika")
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)

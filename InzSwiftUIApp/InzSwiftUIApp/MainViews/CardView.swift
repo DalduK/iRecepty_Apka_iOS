@@ -10,7 +10,7 @@ import SwiftUI
 struct CardView: View {
     var cardsData: Cards
     var body: some View {
-        let colors = Gradient(colors: [.purple,.blue])
+        let colors = Gradient(colors: cardsData.wykorzystana ? [.purple,.blue]: [.gray])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         VStack {
             Image(uiImage: generateQRCode(from: cardsData.image))

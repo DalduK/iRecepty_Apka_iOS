@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+
+
 struct PassView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var email: String = ""
     @State var isValid: Bool = false
+    @State var text = ""
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
@@ -28,6 +31,7 @@ struct PassView: View {
                     .padding()
                 
                 Text("Podaj mail powiązany z kontem")
+                
                 
                 HStack {
                     Image(systemName: "envelope").foregroundColor(.gray)
