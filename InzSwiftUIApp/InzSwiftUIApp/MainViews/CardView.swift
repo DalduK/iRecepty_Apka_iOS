@@ -18,11 +18,11 @@ struct CardView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(.all, 30.0)
-//                Color.white.cornerRadius(15)
-//            AsyncImage(url: URL(string: cardsData.image)!,
-//                           placeholder: { Text("Loading ...") },
-//                           image: { Image(uiImage: $0).resizable()})
-//            }.aspectRatio(contentMode: .fit).padding().cornerRadius(15)
+            //                Color.white.cornerRadius(15)
+            //            AsyncImage(url: URL(string: cardsData.image)!,
+            //                           placeholder: { Text("Loading ...") },
+            //                           image: { Image(uiImage: $0).resizable()})
+            //            }.aspectRatio(contentMode: .fit).padding().cornerRadius(15)
             
             HStack {
                 VStack(alignment: .leading) {

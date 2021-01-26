@@ -10,23 +10,38 @@ import SwiftUI
 
 class UserAuth: ObservableObject {
     @Published var isLoggeddin = false
-    @Published var token: String = ""
-    @Published var userName: String = ""
-    @State var appearance = UserDefaults.standard
+    @Published private var token: String = ""
+    @Published private var userName: String = ""
+    
     
     
     func logout(){
+        cardsData.removeAll()
         self.isLoggeddin = false
         self.token = ""
+        self.userName = ""
     }
     
     func login(){
+        cardsData = load("cardData.json")
         self.isLoggeddin = true
     }
+    func setUserName(name:String){
+        self.userName = name
+    }
+    
     
     func setToken(token:String, userName:String){
         self.token = token
         self.userName = userName
+    }
+    
+    func getToken() -> String{
+        return self.token
+    }
+    
+    func getUserName() -> String{
+        return self.userName
     }
     
     

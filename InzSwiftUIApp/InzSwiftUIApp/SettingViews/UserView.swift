@@ -144,6 +144,7 @@ extension View {
             .mask(self)
     }
 }
+
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
         UserView()

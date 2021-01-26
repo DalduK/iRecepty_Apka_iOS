@@ -7,12 +7,26 @@
 
 import SwiftUI
 
-struct ReceptList: View {
+struct PrescriList: View {
     @State private var showUsed = false
-    var filteredCards: [Cards] {
-        cardsData.filter { cards in
-            (showUsed || cards.wykorzystana)
+    @State private var cards = [HomeData]()
+    func getHomeData(filter: String) {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/recepty?filter=" + filter) else {
+            print("Invalid URL")
+            return
         }
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
+                    DispatchQueue.main.async {
+                        self.cards = response
+                    }
+                    return
+                }
+            }
+        }.resume()
     }
     var body: some View {
         NavigationView{
@@ -26,7 +40,7 @@ struct ReceptList: View {
                             Text("Nowe")
                             Image(systemName: "arrow.up.bin")
                         }
-
+                        
                         Button(action: {
                             // enable geolocation
                         }) {
@@ -48,11 +62,23 @@ struct ReceptList: View {
                             .frame(width: 25.0, height: 25.0)
                             .accentColor(.gray)
                     }
+                    
+                    Button(action: {
+                        
+                    }, label: {HStack{
+                        Text("Odśwież Dane")
+                        Spacer()
+                        Image(systemName: "repeat.circle.fill")
+                            .resizable()
+                            .frame(width: 25.0, height: 25.0)
+                            .accentColor(.gray)
+                    }
+                    })
                 }
                 Section{
-                    ForEach(filteredCards){cards in
-                        NavigationLink(destination: ReceptDetails(cardDetail: cards)){
-                            ReceptRowView(
+                    ForEach(cardsData){cards in
+                        NavigationLink(destination: PrescriDetails(cardDetail: cards)){
+                            PrescriRowView(
                                 image: cards.image,
                                 data: cards.data,
                                 recepta: cards.recepta,
@@ -70,10 +96,10 @@ struct ReceptList: View {
         }
     }
 }
-        
 
-struct ReceptList_Previews: PreviewProvider {
+
+struct PrescriList_Previews: PreviewProvider {
     static var previews: some View {
-        ReceptList()
+        PrescriList()
     }
 }

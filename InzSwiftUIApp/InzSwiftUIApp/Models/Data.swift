@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 
-var cardsData: [Cards] = load("cardData.json")
+var cardsData: [Cards] = [Cards]()
 
 struct Cards: Hashable, Codable, Identifiable {
     var id: Int

@@ -55,7 +55,7 @@ struct LoginView: View {
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
                     userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
-                    print(userAuth.token)
+                    print(userAuth.getToken())
                     withAnimation{
                         userAuth.login()
                     }
@@ -88,7 +88,7 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "person").foregroundColor(.gray)
-                        TextField("Nazwa użytkownika",text:$userName).autocapitalization(.none)
+                        TextField("Nazwa użytkownika",text:$userName)
                     }
                     .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(
@@ -124,8 +124,10 @@ struct LoginView: View {
                     
                     ZStack{
                         Button(action: {
-                            loadingAction = true
-                            login(login: userName, password: password)
+                            userAuth.setUserName(name:userName)
+                            userAuth.login()
+//                            loadingAction = true
+//                            login(login: userName, password: password)
                         }){
                             Text("Zaloguj się")
                                 .padding()
