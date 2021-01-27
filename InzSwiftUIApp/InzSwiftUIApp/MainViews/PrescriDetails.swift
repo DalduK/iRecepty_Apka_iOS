@@ -8,7 +8,49 @@
 import SwiftUI
 
 struct PrescriDetails: View {
-    var cardDetail: Cards
+    var cardID: String
+    var userAuth: UserAuth
+    var doctor: String
+    @State var model = [PrescriData]()
+    @State var didAppear = false
+    @State var appearCount = 0
+    
+    func onLoad() {
+        if didAppear == false {
+            appearCount += 1
+            getHomeData(id: cardID)
+        }
+        didAppear = true
+    }
+    
+    func getHomeData(id: String) {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/" + id) else {
+            print("Invalid URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            print("data")
+            let str = String(decoding: data!, as: UTF8.self)
+            print(str)
+            print("request")
+            if let data = data {
+                if let response = try? JSONDecoder().decode(PrescriData.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.model[0] = response
+                        print(model[0])
+                    }
+                    return
+                }
+            }
+        }.resume()
+    }
+    
     var body: some View {
         GeometryReader{ (proxy : GeometryProxy) in
             VStack {
@@ -18,7 +60,7 @@ struct PrescriDetails: View {
                         .frame(width: proxy.size.width, height:proxy.size.height/2.4 , alignment: .topLeading)
                     ZStack{
                         Color.white
-                        Image(uiImage: generateQRCode(from: cardDetail.image))
+                        Image(uiImage: generateQRCode(from: cardID))
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()
@@ -31,18 +73,19 @@ struct PrescriDetails: View {
                     .shadow(radius: 7)
                     .padding(.top, -140.0)
                     .padding()
+                    if model.isEmpty == true{
                     
-                    
+                    }else{
                     List {
                         Section{
-                            Text(cardDetail.recepta)
+                            Text(model[0].description ?? "Desc")
                                 .font(.title)
                                 .foregroundColor(.primary)
                             
                             HStack {
-                                Text(cardDetail.lekarz)
+                                Text(doctor)
                                 Spacer()
-                                Text(cardDetail.data)
+                                Text(model[0].createdDate ?? "DAte")
                             }
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -70,17 +113,20 @@ struct PrescriDetails: View {
                         }
                     }.frame(width: proxy.size.width - 5, height: proxy.size.height - 50, alignment: .center)
                     .listStyle(InsetGroupedListStyle())
+                    }
                 }.background(Color(UIColor(named: "GrayColor")!))
-            }
+            }.onAppear(perform: {
+                onLoad()
+            })
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("Wróć do listy!", displayMode: .inline)
         }
     }
 }
 
-struct PrescriDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        PrescriDetails(cardDetail: cardsData[0])
-        
-    }
-}
+//struct PrescriDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+////        PrescriDetails(cardDetail: )
+//        
+//    }
+//}

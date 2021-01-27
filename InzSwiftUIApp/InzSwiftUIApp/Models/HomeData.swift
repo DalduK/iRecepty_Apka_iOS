@@ -8,10 +8,11 @@
 import Foundation
 
 
-struct HomeData:  Codable {
-    var idRecepty: Int
-    var data: String
-    var nazwa: String
-    var lekarz: String
-    var wykorzystana: Bool    
+struct HomeData: Hashable, Codable {
+    var number: String
+    var pesel: String?
+    var description: String
+    var status: String
+    var doctor: String
+    var creationDate: String
 }

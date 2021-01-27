@@ -12,7 +12,7 @@ struct PrescriRowView: View {
     var data: String
     var recepta: String
     var lekarz: String
-    var wykorzystana:Bool
+    var wykorzystana:String
     var body: some View {
         HStack {
             ZStack{
@@ -64,6 +64,6 @@ struct PrescriRowView_Previews: PreviewProvider {
         var data = "Data"
         var recepta = "Recepta"
         var lekarz = "Dr. Andrzej Wolny"
-        PrescriRowView(image: image, data: data, recepta: recepta, lekarz: lekarz, wykorzystana: true)
+        PrescriRowView(image: image, data: data, recepta: recepta, lekarz: lekarz, wykorzystana: "new")
     }
 }

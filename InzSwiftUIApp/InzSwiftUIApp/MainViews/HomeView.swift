@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Foundation
+
 
 struct HomeView: View {
     @State var index = 0
@@ -15,23 +17,39 @@ struct HomeView: View {
     @State private var showUsed = false
     @State private var cards = [HomeData]()
     @EnvironmentObject var userAuth: UserAuth
-    
-    
+    @State private var request = "all"
+    @State var didAppear = false
+    @State var appearCount = 0
+        
     enum Tab {
         case featured
         case list
         case user
     }
-    
+    func onLoad() {
+        if didAppear == false {
+            appearCount += 1
+            getHomeData(filter: request)
+        }
+        didAppear = true
+    }
     
     func getHomeData(filter: String) {
-        guard let url = URL(string: "https://recepty.eu.ngrok.io/recepty?filter=" + filter) else {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
             return
         }
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
+        
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+//            print("data")
+//            let str = String(decoding: data!, as: UTF8.self)
+//            print(str)
+//            print("request")
             if let data = data {
                 if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
                     DispatchQueue.main.async {
@@ -55,11 +73,11 @@ struct HomeView: View {
                         ZStack{
                             VStack {
                                 HStack{
-                                    Text("Witaj " + userAuth.getUserName())
+                                    Text("Witaj " + userAuth.getUserName()).lineLimit(1)
                                         .font(.system(size:30, weight: .bold))
                                     Spacer()
                                     Button(action: {
-                                        
+                                        getHomeData(filter: request)
                                     }, label: {
                                         
                                         Image(systemName: "repeat.circle.fill")
@@ -70,21 +88,21 @@ struct HomeView: View {
                                     
                                     Menu {
                                         Button(action: {
-                                            
+                                            getHomeData(filter: request)
                                         }) {
                                             Text("Nowe")
                                             Image(systemName: "arrow.up.bin")
                                         }
                                         
                                         Button(action: {
-                                            
+                                            getHomeData(filter: request)
                                         }) {
                                             Text("Wykorzystane")
                                             Image(systemName: "xmark.bin")
                                         }
                                         
                                         Button(action: {
-                                            
+                                            getHomeData(filter: request)
                                         }) {
                                             Text("Wszystkie")
                                             Image(systemName: "archivebox")
@@ -97,18 +115,28 @@ struct HomeView: View {
                                 }
                                 .padding(.horizontal)
                                 .padding(.top, 10)
-                                ScrollView (.horizontal, showsIndicators: true){
-                                    HStack(spacing: 20)
-                                    {
-                                        ForEach(cardsData) { cards in
-                                            NavigationLink(destination: PrescriDetails(cardDetail: cards)){
-                                                GeometryReader { geometry in
-                                                    CardView(cardsData: cards)
-                                                        .rotation3DEffect(.degrees(0), axis: (x: 40, y: 0, z: 0))
+                                if cards.isEmpty == true {
+                                    
+                                    CardView(image: "NoImage", data: "25.01.2020", recepta: "Witaj w aplikacji !", lekarz: "Tutaj będzie nazwa lekarza", wykorzystana: "new").padding()
+                                        .frame(width: gx.size.width, height: gx.size.height * 0.8)
+                                }else{
+                                    ScrollView (.horizontal, showsIndicators: true){
+                                        HStack(spacing: 20)
+                                        {
+                                            ForEach(cards,id: \.number) { cardsIter in
+                                                NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){
+                                                    GeometryReader { geometry in
+                                                        CardView(image: cardsIter.number,
+                                                                 data: cardsIter.creationDate,
+                                                                 recepta: cardsIter.pesel ?? "98020710278",
+                                                                 lekarz: cardsIter.doctor,
+                                                                 wykorzystana: cardsIter.status)
+                                                            .rotation3DEffect(.degrees(0), axis: (x: 40, y: 0, z: 0))
+                                                    }
+                                                    .padding()
+                                                    .frame(width: gx.size.width, height: gx.size.height * 0.8)
+                                                    
                                                 }
-                                                .padding()
-                                                .frame(width: gx.size.width, height: gx.size.height * 0.8)
-                                                
                                             }
                                         }
                                     }
@@ -117,6 +145,9 @@ struct HomeView: View {
                         }
                     }
                 }
+                .onAppear(perform: {
+                    onLoad()
+                })
                 .navigationBarTitle("Powrót")
                 .navigationBarHidden(true)
             }

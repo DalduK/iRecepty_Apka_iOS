@@ -10,14 +10,32 @@ import SwiftUI
 struct PrescriList: View {
     @State private var showUsed = false
     @State private var cards = [HomeData]()
+    @EnvironmentObject var userAuth: UserAuth
+    @State private var request = "all"
+    @State var didAppear = false
+    @State var appearCount = 0
+    
+    func onLoad() {
+        if didAppear == false {
+            appearCount += 1
+            getHomeData(filter: request)
+        }
+        didAppear = true
+    }
+    
     func getHomeData(filter: String) {
-        guard let url = URL(string: "https://recepty.eu.ngrok.io/recepty?filter=" + filter) else {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
             return
         }
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
+        
         
         URLSession.shared.dataTask(with: request) { data, response, error in
+            print("request")
             if let data = data {
                 if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
                     DispatchQueue.main.async {
@@ -35,21 +53,23 @@ struct PrescriList: View {
                 Section{
                     Menu {
                         Button(action: {
-                            // change country setting
+                            DispatchQueue.main.async{
+                            getHomeData(filter: request)
+                            }
                         }) {
                             Text("Nowe")
                             Image(systemName: "arrow.up.bin")
                         }
                         
                         Button(action: {
-                            // enable geolocation
+                            getHomeData(filter: request)
                         }) {
                             Text("Wykorzystane")
                             Image(systemName: "xmark.bin")
                         }
                         
                         Button(action: {
-                            // enable geolocation
+                            getHomeData(filter: request)
                         }) {
                             Text("Wszystkie")
                             Image(systemName: "archivebox")
@@ -64,7 +84,7 @@ struct PrescriList: View {
                     }
                     
                     Button(action: {
-                        
+                        getHomeData(filter: request)
                     }, label: {HStack{
                         Text("Odśwież Dane")
                         Spacer()
@@ -76,19 +96,32 @@ struct PrescriList: View {
                     })
                 }
                 Section{
-                    ForEach(cardsData){cards in
-                        NavigationLink(destination: PrescriDetails(cardDetail: cards)){
+                    if cards.isEmpty == true {
+                        Text("Tutaj będą widoczne wszystkie twoje recepty w formie wygodnej listy.")
+                        PrescriRowView(
+                            image: "NoImage",
+                            data: "25.01.2020",
+                            recepta: "Witaj w aplikacji !",
+                            lekarz:  "Tutaj będzie nazwa lekarza",
+                            wykorzystana: "new"
+                        )
+                    }else{
+                    ForEach(cards, id: \.number){cardsIter in
+                        NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){
                             PrescriRowView(
-                                image: cards.image,
-                                data: cards.data,
-                                recepta: cards.recepta,
-                                lekarz: cards.lekarz,
-                                wykorzystana: cards.wykorzystana
+                                image: cardsIter.number,
+                                data: cardsIter.creationDate,
+                                recepta: cardsIter.description,
+                                lekarz: cardsIter.doctor,
+                                wykorzystana: cardsIter.status
                             )
                         }
                     }
+                    }
                 }
-            }
+            }.onAppear(perform: {
+                onLoad()
+            })
             .padding(.horizontal, -5)
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
