@@ -20,10 +20,18 @@ struct LoginView: View {
     @EnvironmentObject var userAuth: UserAuth
     @State var errorAction: Bool = false
     @State var loadingAction: Bool = false
+    @State var errorname = ""
+    @State var errordetails = ""
     
-    var notLogged: ActionSheet {
-        ActionSheet(title: Text("Błąd Logowania"), message: Text("Spróbuj ponownie"), buttons: [.cancel()])
+    var errorActionSheet: ActionSheet {
+        ActionSheet(title: Text(errorname), message: Text(errordetails), buttons: [.default(Text("Potwierdź"))])
     }
+    
+    func isValidPassword(_ password: String) -> Bool{
+        let passRegex = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
+        return passRegex.evaluate(with: password)
+    }
+    
     
     func login(login: String, password: String){
         let pass = SHA256.hash(data: Data(password.utf8))
@@ -55,6 +63,7 @@ struct LoginView: View {
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
                     userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
+                    userAuth.setUserName(name:userName)
                     print(userAuth.getToken())
                     withAnimation{
                         userAuth.login()
@@ -62,6 +71,8 @@ struct LoginView: View {
                 }
             }else {
                 loadingAction = false
+                errorname = "Nie istnieje taki użytkownik"
+                errordetails = "Podaj poprawne dane"
                 errorAction = true
             }
             
@@ -79,7 +90,7 @@ struct LoginView: View {
                         .bold()
                         .font(.title)
                     
-                    Text("Zaloguj się !")
+                    Text("Zaloguj się za pomocą nazwy użytkownika!")
                     
                     Image("Login")
                         .resizable()
@@ -124,10 +135,22 @@ struct LoginView: View {
                     
                     ZStack{
                         Button(action: {
-                            userAuth.setUserName(name:userName)
-                            userAuth.login()
-//                            loadingAction = true
-//                            login(login: userName, password: password)
+                            if userName == "" {
+                                errorname = "Nazwa użytkownika lub imię i nazwisko są puste"
+                                errordetails = "Podaj poprawne dane"
+                                self.errorAction.toggle()
+                            }else{
+                                if (password != "") && isValidPassword(password){
+                                loadingAction = true
+                                
+                                login(login: userName, password: password)
+                                }
+                                else{
+                                    errorname = "Hasło jest niepoprawne"
+                                    errordetails = "Proszę podać poprawne hasło"
+                                    self.errorAction.toggle()
+                                }
+                            }
                         }){
                             Text("Zaloguj się")
                                 .padding()
@@ -144,7 +167,7 @@ struct LoginView: View {
             }
             .navigationTitle("Login")
             .actionSheet(isPresented: $errorAction, content:{
-                            return self.notLogged
+                            return self.errorActionSheet
             })
             .progressViewStyle(CircularProgressViewStyle())
             .navigationBarHidden(true)

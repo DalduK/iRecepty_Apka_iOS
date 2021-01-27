@@ -52,12 +52,14 @@ struct RegisterView: View {
     }
     
     
-    func register(login: String, password: String, email: String){
+    func register(login: String, password: String, email: String, name:String, pesel: String){
         let pass = SHA256.hash(data: Data(password.utf8))
         let hashString = pass.compactMap { String(format: "%02x", $0) }.joined()
         let json: [String: Any] = ["login": login,
                                    "password": hashString,
-                                   "email" : email]
+                                   "name": name,
+                                   "email" : email,
+                                   "pesel": pesel]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         guard let url = URL(string: "https://recepty.eu.ngrok.io/register") else {
             print("Invalid URL")
@@ -83,7 +85,7 @@ struct RegisterView: View {
                 errorAction = false
                 let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
+//                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
                     print(userAuth.getToken())
                     withAnimation{
                         Confirmed.toggle()
@@ -220,7 +222,7 @@ struct RegisterView: View {
                                                 if password == password2{
                                                     if rules == true{
                                                         loadingAction = true
-                                                        register(login: userName, password: password, email: email)
+                                                        register(login: userName, password: password, email: email, name: name + " " + surname, pesel: pesel)
                                                     }else{
                                                         errorname = "Potwierdz regulamin"
                                                         errordetails = "Bez potwierdzenia regulaminu nie założysz konta!"
@@ -277,7 +279,7 @@ struct RegisterView: View {
             return self.noPassword
         })
         .alert(isPresented: $Confirmed){
-            Alert(title: Text("Konto zostało utworzone, sprawdź maila :)"))
+            Alert(title: Text("Konto zostało utworzone, sprawdź podaną skrzynkę mailową!"))
         }
         .padding(.horizontal)
     }
