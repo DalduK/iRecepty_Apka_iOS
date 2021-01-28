@@ -44,6 +44,17 @@ struct HomeView: View {
         }
     }
     
+    func getDateFromTimeStamp(timeStamp : Double) -> String {
+        let time = TimeInterval(timeStamp) / 1000
+        let date = Date(timeIntervalSince1970: time)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+    
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
@@ -140,11 +151,13 @@ struct HomeView: View {
                                     ScrollView (.horizontal, showsIndicators: true){
                                         HStack(spacing: 20)
                                         {
-                                            ForEach(cards,id: \.number) { cardsIter in
+                                            ForEach(cards,id: \.creationDate) { cardsIter in
+                                                let doubleTime = Double(cardsIter.creationDate)
+                                                let date = getDateFromTimeStamp(timeStamp: doubleTime!)
                                                 NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){
                                                     GeometryReader { geometry in
                                                         CardView(image: cardsIter.number,
-                                                                 data: cardsIter.creationDate,
+                                                                 data: date,
                                                                  recepta: cardsIter.description,
                                                                  lekarz: cardsIter.doctor,
                                                                  wykorzystana: cardsIter.status)

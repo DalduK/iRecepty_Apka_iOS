@@ -10,7 +10,7 @@ import Foundation
 struct PrescriData:  Hashable, Codable {
     var number: String?
     var pesel: String?
-    var createdDate: String?
+    var createdDate: String
     var expiration: String?
     var status: String?
     var medications: [Medications]
