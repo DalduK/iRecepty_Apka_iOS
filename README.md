@@ -21,9 +21,9 @@ App use only built in packages from Swift and SwiftUI
 
 ## App Screenshots
 Login View:
-<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/Simulator%20Screen%20Shot%20-%20iPhone%2012%20mini%20-%202021-01-26%20at%2016.39.44_iphone12miniblack_portrait.png" width="200">
+<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/Simulator%20Screen%20Shot%20-%20iPhone%2012%20mini%20-%202021-01-26%20at%2016.39.44_iphone12miniblack_portrait.png" width="180">
 HomePage:
-<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/ekranglowny.png" width="200">
+<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/ekranglowny.png" width="180">
 ExactInfo:
-<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/infododkladne.png" width="200">
+<img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/infododkladne.png" width="180">
 
