@@ -33,11 +33,6 @@ struct CardView: View {
                 .scaledToFit()
                 .padding(.all, 30.0)
             }
-            //                Color.white.cornerRadius(15)
-            //            AsyncImage(url: URL(string: cardsData.image)!,
-            //                           placeholder: { Text("Loading ...") },
-            //                           image: { Image(uiImage: $0).resizable()})
-            //            }.aspectRatio(contentMode: .fit).padding().cornerRadius(15)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -67,12 +62,3 @@ struct CardView: View {
     }
 }
 
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        var image = "QRCode"
-//        var data = "Data"
-//        var recepta = "Recepta"
-//        var lekarz = "Dr. Andrzej Wolny"
-//        CardView(cardsData: cardsData[0])
-//    }
-//}

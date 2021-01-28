@@ -31,6 +31,8 @@
 		0176653225AA499300E5A8B3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653125AA499300E5A8B3 /* AboutView.swift */; };
 		0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653425AA4F3A00E5A8B3 /* DeleteView.swift */; };
 		018028DA25AD94C100FE2E71 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */; };
+		0191926625C2C106005790EA /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191926525C2C106005790EA /* PasswordValidator.swift */; };
+		0191926A25C2DCF0005790EA /* FristTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191926925C2DCF0005790EA /* FristTimeView.swift */; };
 		0198C11025C1F462008D4DC8 /* TopBarHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198C10F25C1F462008D4DC8 /* TopBarHomeView.swift */; };
 		0198C11425C21085008D4DC8 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198C11325C21085008D4DC8 /* DetailModel.swift */; };
 		01ACD96325BDEECD0012D94A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */; };
@@ -76,6 +78,8 @@
 		0176653125AA499300E5A8B3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		0176653425AA4F3A00E5A8B3 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		0191926525C2C106005790EA /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
+		0191926925C2DCF0005790EA /* FristTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FristTimeView.swift; sourceTree = "<group>"; };
 		0198C10F25C1F462008D4DC8 /* TopBarHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarHomeView.swift; sourceTree = "<group>"; };
 		0198C11325C21085008D4DC8 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */,
 				0104E1D825C0229B000A7C97 /* HomeData.swift */,
 				0175EB29257AB6E0007C5CF8 /* Resources */,
+				0191926525C2C106005790EA /* PasswordValidator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				0172E482257A8E5400ED727C /* CardView.swift */,
 				0167D1E225A07EDD00A843BD /* PrescriDetails.swift */,
 				0198C10F25C1F462008D4DC8 /* TopBarHomeView.swift */,
+				0191926925C2DCF0005790EA /* FristTimeView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */,
 				0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */,
 				0198C11025C1F462008D4DC8 /* TopBarHomeView.swift in Sources */,
+				0191926A25C2DCF0005790EA /* FristTimeView.swift in Sources */,
 				01ACD96325BDEECD0012D94A /* KeyboardResponder.swift in Sources */,
 				0167D1DC25A07D4700A843BD /* PrescriList.swift in Sources */,
 				0167D1E325A07EDD00A843BD /* PrescriDetails.swift in Sources */,
@@ -362,6 +369,7 @@
 				0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,
+				0191926625C2C106005790EA /* PasswordValidator.swift in Sources */,
 				0198C11425C21085008D4DC8 /* DetailModel.swift in Sources */,
 				0114F61725A8F7CE00297BFE /* eMailView.swift in Sources */,
 				01232F47257D955B00563508 /* LoadingView.swift in Sources */,

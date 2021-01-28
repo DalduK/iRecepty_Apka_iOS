@@ -35,7 +35,7 @@ struct DeleteView: View {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             var statusCode: Int = 0
-            guard let data = data, let response = response, error == nil else {
+            guard let _ = data, let response = response, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }

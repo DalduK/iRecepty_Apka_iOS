@@ -40,10 +40,7 @@ struct RegisterView: View {
         return !emailPred.evaluate(with: email)
     }
     
-    func isValidPassword(_ password: String) -> Bool{
-        let passRegex = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[0-9])(?=.*[A-Z]).{8,}$")
-        return passRegex.evaluate(with: password)
-    }
+    
     
     func limitText(_ upper: Int) {
         if pesel.count > upper {
@@ -72,7 +69,7 @@ struct RegisterView: View {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             var statusCode: Int = 0
-            guard let data = data, let response = response, error == nil else {
+            guard let _ = data, let response = response, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
@@ -83,7 +80,7 @@ struct RegisterView: View {
             if statusCode == 200{
                 loadingAction = false
                 errorAction = false
-                let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+//                let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
 //                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
                     print(userAuth.getToken())
@@ -279,7 +276,12 @@ struct RegisterView: View {
             return self.noPassword
         })
         .alert(isPresented: $Confirmed){
-            Alert(title: Text("Konto zostało utworzone, sprawdź podaną skrzynkę mailową!"))
+            Alert(title: Text("Konto zostało utworzone"),
+                message: Text("Aby potwierdzić konto, sprawdź skrzynkę mailową !"),
+                dismissButton: Alert.Button.default(
+                    Text("Dalej"), action: { self.mode.wrappedValue.dismiss() }
+                )
+            )
         }
         .padding(.horizontal)
     }

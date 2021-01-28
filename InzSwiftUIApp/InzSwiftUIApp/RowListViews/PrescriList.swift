@@ -23,6 +23,16 @@ struct PrescriList: View {
         didAppear = true
     }
     
+    var typeOfPresc:  String {
+        if request == "all"{
+            return "Wszystkie"
+        } else if request == "retire" {
+            return "Wykorzystane"
+        }else {
+            return "Aktywne"
+        }
+    }
+    
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
@@ -53,15 +63,15 @@ struct PrescriList: View {
                 Section{
                     Menu {
                         Button(action: {
-                            DispatchQueue.main.async{
+                            request = "active"
                             getHomeData(filter: request)
-                            }
                         }) {
-                            Text("Nowe")
+                            Text("Aktywne")
                             Image(systemName: "arrow.up.bin")
                         }
                         
                         Button(action: {
+                            request = "retire"
                             getHomeData(filter: request)
                         }) {
                             Text("Wykorzystane")
@@ -69,12 +79,13 @@ struct PrescriList: View {
                         }
                         
                         Button(action: {
+                            request = "all"
                             getHomeData(filter: request)
                         }) {
                             Text("Wszystkie")
                             Image(systemName: "archivebox")
                         }
-                    } label: {
+                    }  label: {
                         Text("Wybierz recepty")
                         Spacer()
                         Image(systemName: "ellipsis.circle")
@@ -94,6 +105,12 @@ struct PrescriList: View {
                             .accentColor(.gray)
                     }
                     })
+                    
+                    HStack{
+                        Text("Wyświetlane recepty")
+                        Spacer()
+                        Text(typeOfPresc)
+                    }
                 }
                 Section{
                     if cards.isEmpty == true {

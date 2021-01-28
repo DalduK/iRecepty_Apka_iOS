@@ -34,6 +34,16 @@ struct HomeView: View {
         didAppear = true
     }
     
+    var typeOfPresc:  String {
+        if request == "all"{
+            return "Wszystkie"
+        } else if request == "retire" {
+            return "Wykorzystane"
+        }else {
+            return "Aktywne"
+        }
+    }
+    
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
@@ -46,10 +56,6 @@ struct HomeView: View {
         
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-//            print("data")
-//            let str = String(decoding: data!, as: UTF8.self)
-//            print(str)
-//            print("request")
             if let data = data {
                 if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
                     DispatchQueue.main.async {
@@ -88,13 +94,15 @@ struct HomeView: View {
                                     
                                     Menu {
                                         Button(action: {
+                                            request = "active"
                                             getHomeData(filter: request)
                                         }) {
-                                            Text("Nowe")
+                                            Text("Aktywne")
                                             Image(systemName: "arrow.up.bin")
                                         }
                                         
                                         Button(action: {
+                                            request = "retire"
                                             getHomeData(filter: request)
                                         }) {
                                             Text("Wykorzystane")
@@ -102,6 +110,7 @@ struct HomeView: View {
                                         }
                                         
                                         Button(action: {
+                                            request = "all"
                                             getHomeData(filter: request)
                                         }) {
                                             Text("Wszystkie")
@@ -115,11 +124,19 @@ struct HomeView: View {
                                 }
                                 .padding(.horizontal)
                                 .padding(.top, 10)
+                                HStack{
+                                    Text("Wyświetlane recepty")
+                                    Spacer()
+                                    Text(typeOfPresc)
+                                }.padding(.horizontal, 20).padding(.bottom,10)
                                 if cards.isEmpty == true {
-                                    
+                                    NavigationLink(destination: FristTimeView()){
                                     CardView(image: "NoImage", data: "25.01.2020", recepta: "Witaj w aplikacji !", lekarz: "Tutaj będzie nazwa lekarza", wykorzystana: "new").padding()
                                         .frame(width: gx.size.width, height: gx.size.height * 0.8)
+                                    }
                                 }else{
+                                    
+            
                                     ScrollView (.horizontal, showsIndicators: true){
                                         HStack(spacing: 20)
                                         {
@@ -128,7 +145,7 @@ struct HomeView: View {
                                                     GeometryReader { geometry in
                                                         CardView(image: cardsIter.number,
                                                                  data: cardsIter.creationDate,
-                                                                 recepta: cardsIter.pesel ?? "98020710278",
+                                                                 recepta: cardsIter.description,
                                                                  lekarz: cardsIter.doctor,
                                                                  wykorzystana: cardsIter.status)
                                                             .rotation3DEffect(.degrees(0), axis: (x: 40, y: 0, z: 0))

@@ -40,12 +40,12 @@ struct PrescriDetails: View {
             print(str)
             print("request")
             if let data = data {
-                if let response = try? JSONDecoder().decode(PrescriData.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.model[0] = response
-                        print(model[0])
-                    }
-                    return
+                do{
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(PrescriData.self, from: data)
+                    model.append(response)
+                }catch{
+                    print("Couldn't parse data as \(PrescriData.self):\n\(error)")
                 }
             }
         }.resume()
@@ -65,9 +65,6 @@ struct PrescriDetails: View {
                             .resizable()
                             .scaledToFit()
                             .padding(.all, 30.0)
-                        //            AsyncImage(url: URL(string: cardDetail.image)!,
-                        //                           placeholder: { Text("Loading ...") },
-                        //                           image: { Image(uiImage: $0).resizable()})
                     }.aspectRatio(contentMode: .fit)
                     .cornerRadius(15)
                     .shadow(radius: 7)
@@ -78,39 +75,46 @@ struct PrescriDetails: View {
                     }else{
                     List {
                         Section{
-                            Text(model[0].description ?? "Desc")
+                            Text(model[0].shortDescription ?? "Desc")
                                 .font(.title)
                                 .foregroundColor(.primary)
                             
                             HStack {
                                 Text(doctor)
                                 Spacer()
-                                Text(model[0].createdDate ?? "DAte")
+                                Text(model[0].createdDate ?? "Data Dodania")
+                            }
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            
+                            HStack {
+                                Text("Recepta aktywna do:")
+                                Spacer()
+                                Text(model[0].expiration ?? "Data Zakończenia")
                             }
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         }
                         
                         
-                        Text("Opis Recepty")
+                        Text("Rozpis Leków")
                             .font(.title2)
                         Text("Dawkowanie")
                         
-                        HStack{
-                            Text("Apap")
-                            Spacer()
-                            Text("2 razy dziennie")
+                        ForEach(model[0].medications, id: \.name) { drug in
+                            HStack{
+                                Text(drug.name)
+                                Spacer()
+                                Text(String(drug.amount))
+                            }
                         }
-                        HStack{
-                            Text("Witamina C")
-                            Spacer()
-                            Text("3 razy dziennie")
+                        
+                        Section{
+                            Text("Opis recepty").font(.title2)
+                            
+                            Text(model[0].description ?? "Brakuje opisu recepty")
                         }
-                        HStack{
-                            Text("Lek na kaszel")
-                            Spacer()
-                            Text("2 razy dziennie")
-                        }
+                        
                     }.frame(width: proxy.size.width - 5, height: proxy.size.height - 50, alignment: .center)
                     .listStyle(InsetGroupedListStyle())
                     }
@@ -118,15 +122,10 @@ struct PrescriDetails: View {
             }.onAppear(perform: {
                 onLoad()
             })
+            .padding(.bottom, 50)
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("Wróć do listy!", displayMode: .inline)
         }
     }
 }
 
-//struct PrescriDetails_Previews: PreviewProvider {
-//    static var previews: some View {
-////        PrescriDetails(cardDetail: )
-//        
-//    }
-//}
