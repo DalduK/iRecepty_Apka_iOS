@@ -1,4 +1,6 @@
-![iRecepty](https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/iRecepty.png?raw=true)
+<p align="center">
+  <img src="https://github.com/DalduK/iRecepty_Apka_iOS/blob/main/Screeny/iRecepty.png" />
+</p>
 
 # iRecepty_Apka_iOS
 
