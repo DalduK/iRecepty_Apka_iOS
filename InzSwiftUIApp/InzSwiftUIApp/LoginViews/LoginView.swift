@@ -162,7 +162,7 @@ struct LoginView: View {
                     .padding(.top,5)
                 }
                 if loadingAction == true{
-                    LoadingView()
+                    LoadingView().shadow(radius: 20)
                 }
             }
             .navigationTitle("Login")

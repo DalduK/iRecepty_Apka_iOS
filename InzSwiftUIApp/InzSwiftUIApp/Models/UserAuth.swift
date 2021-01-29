@@ -16,14 +16,12 @@ class UserAuth: ObservableObject {
     
     
     func logout(){
-        cardsData.removeAll()
         self.isLoggeddin = false
         self.token = ""
         self.userName = ""
     }
     
     func login(){
-        cardsData = load("cardData.json")
         self.isLoggeddin = true
     }
     func setUserName(name:String){

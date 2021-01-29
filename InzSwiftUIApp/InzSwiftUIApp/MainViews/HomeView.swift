@@ -20,6 +20,10 @@ struct HomeView: View {
     @State private var request = "all"
     @State var didAppear = false
     @State var appearCount = 0
+    @State var errorAction: Bool = false
+    @State var loadingAction: Bool = false
+    @State var errorname = ""
+    @State var errordetails = ""
         
     enum Tab {
         case featured
@@ -44,17 +48,6 @@ struct HomeView: View {
         }
     }
     
-    func getDateFromTimeStamp(timeStamp : Double) -> String {
-        let time = TimeInterval(timeStamp) / 1000
-        let date = Date(timeIntervalSince1970: time)
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
-        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
-        dateFormatter.timeZone = .current
-        let localDate = dateFormatter.string(from: date)
-        return localDate
-    }
-    
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
             print("Invalid URL")
@@ -67,20 +60,34 @@ struct HomeView: View {
         
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
+            var statusCode: Int = 0
+            guard let data = data, let response = response, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                statusCode = httpResponse.statusCode
+            }
+            print("StatusCode: \(statusCode)")
+            if statusCode == 200{
+                errorAction = false
+                if let dataJSON = try? JSONDecoder().decode([HomeData].self, from: data){
                     DispatchQueue.main.async {
-                        self.cards = response
+                        self.cards = dataJSON
                     }
                     return
                 }
+            }else {
+                loadingAction = false
+                errorname = "Użytkownik Wylogowany"
+                errordetails = "Ktoś zalogował się na innym urządzeniu, bądź token utracił ważność. Zaloguj się ponownie"
+                errorAction = true
             }
-        }.resume()
+            
+        }
+        .resume()
     }
     
-    func cleanData(){
-        cards.removeAll()
-    }
     
     var body: some View {
         TabView(selection: $selection) {
@@ -194,7 +201,14 @@ struct HomeView: View {
                 .tabItem {
                     Label("Ustawienia", systemImage: "person.crop.circle")
                 }.tag(Tab.user)
-            
+        }
+        .alert(isPresented: $errorAction){
+            Alert(title: Text(errorname),
+                message: Text(errordetails),
+                dismissButton: Alert.Button.default(
+                    Text("Zamknij"), action: { userAuth.logout() }
+                )
+            )
         }
     }
 }

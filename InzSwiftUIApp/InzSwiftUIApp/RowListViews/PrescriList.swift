@@ -14,6 +14,10 @@ struct PrescriList: View {
     @State private var request = "all"
     @State var didAppear = false
     @State var appearCount = 0
+    @State var errorAction: Bool = false
+    @State var loadingAction: Bool = false
+    @State var errorname = ""
+    @State var errordetails = ""
     
     func onLoad() {
         if didAppear == false {
@@ -45,16 +49,32 @@ struct PrescriList: View {
         
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            print("request")
-            if let data = data {
-                if let response = try? JSONDecoder().decode([HomeData].self, from: data) {
+            var statusCode: Int = 0
+            guard let data = data, let response = response, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                statusCode = httpResponse.statusCode
+            }
+            print("StatusCode: \(statusCode)")
+            if statusCode == 200{
+                errorAction = false
+                if let dataJSON = try? JSONDecoder().decode([HomeData].self, from: data){
                     DispatchQueue.main.async {
-                        self.cards = response
+                        self.cards = dataJSON
                     }
                     return
                 }
+            }else {
+                loadingAction = false
+                errorname = "Użytkownik Wylogowany"
+                errordetails = "Ktoś zalogował się na innym urządzeniu, bądź token utracił ważność. Zaloguj się ponownie"
+                errorAction = true
             }
-        }.resume()
+            
+        }
+        .resume()
     }
     var body: some View {
         NavigationView{
@@ -124,10 +144,12 @@ struct PrescriList: View {
                         )
                     }else{
                     ForEach(cards, id: \.number){cardsIter in
+                        let doubleTime = Double(cardsIter.creationDate)
+                        let date = getDateFromTimeStamp(timeStamp: doubleTime!)
                         NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){
                             PrescriRowView(
                                 image: cardsIter.number,
-                                data: cardsIter.creationDate,
+                                data: date,
                                 recepta: cardsIter.description,
                                 lekarz: cardsIter.doctor,
                                 wykorzystana: cardsIter.status
@@ -143,6 +165,14 @@ struct PrescriList: View {
             .listStyle(InsetGroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationTitle("Recepty")
+            .alert(isPresented: $errorAction){
+                Alert(title: Text(errorname),
+                    message: Text(errordetails),
+                    dismissButton: Alert.Button.default(
+                        Text("Zamknij"), action: { userAuth.logout() }
+                    )
+                )
+            }
         }
     }
 }

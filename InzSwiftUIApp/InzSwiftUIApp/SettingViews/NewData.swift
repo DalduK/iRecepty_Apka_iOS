@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewData: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var userName: String = ""
     @State private var date = Date()
     @EnvironmentObject var userAuth: UserAuth
@@ -15,6 +16,7 @@ struct NewData: View {
     @State var loadingAction: Bool = false
     @State var errorname = ""
     @State var errordetails = ""
+    @State var Confirmed: Bool = false
     
     func changeUsername(username: String){
         let json: [String: Any] = ["login": username]
@@ -24,7 +26,7 @@ struct NewData: View {
             return
         }
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.httpBody = jsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
@@ -41,11 +43,10 @@ struct NewData: View {
             print("StatusCode: \(statusCode)")
             if statusCode == 200{
                 errorAction = false
+                loadingAction = false
                 DispatchQueue.main.async {
-                    print(userAuth.getToken())
-                    withAnimation{
-                        userAuth.logout()
-                    }
+                    Confirmed.toggle()
+                    userAuth.setUserName(name: username)
                 }
             }else {
                 loadingAction = false
@@ -61,124 +62,58 @@ struct NewData: View {
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
-            List{
-                Section {
-                    Text("Dane użytkownika")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        
+        ZStack{
+            VStack {
+                
+                Image("changename")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .padding(.bottom,40)
+                Text("Podaj nową nazwę użytkownika!")
+                HStack {
+                    Image(systemName: "person").foregroundColor(.gray)
+                    TextField("Nowa nazwa",text:$userName).textContentType(.emailAddress)
                 }
+                .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10).stroke(gradient,lineWidth: 5)
+                )
+                .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
                 
                 
-                
-                Section {
-                    HStack{
-                        Text("Nazwa użytkownika")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                    Text("dalduk")
-                    }
-                    HStack{
-                        Text("Imię i nazwisko")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("Przemysław Woźny")
-                    }
-                    HStack{
-                        Text("Data urodzenia")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("07/02/1998")
-                    }
-                    HStack{
-                        Text("Nazwa użytkownika")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("Pesel")
-                    }
-                    HStack{
-                        Text("Email")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("dalduk14@gmail.com")
-                    }
-                    
-                }
-                
-                Section {
-                    Text("Nazwa użytkownika")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                    HStack{
-                    HStack {
-                        Image(systemName: "lock").foregroundColor(.gray)
-                        SecureField("Nazwa użytkownika",text:$userName).textContentType(.emailAddress)
-                    }
-                    .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10).stroke(gradient,lineWidth: 5)
-                    )
-                    .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-                        Button(action: {
+                ZStack{
+                    Button(action: {
+                        withAnimation {
+                            loadingAction.toggle()
                             changeUsername(username: userName)
-                        }){
-                            Image(systemName: "chevron.right").foregroundColor(.white)
-                                .padding(.init(top: 12, leading: 12, bottom: 13, trailing: 12))
-                                .background(gradient)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
+                    }
+                    }){
+                        Text("Zmień nazwę!")
+                            .padding()
+                            .background(gradient)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
                 }
+                .padding(.top,5)
                 
-                Section {
-                    Text("Imię i nazwisko")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                    HStack{
-                        HStack {
-                            Image(systemName: "lock").foregroundColor(.gray)
-                            SecureField("Imię",text:$userName).textContentType(.emailAddress)
-                        }
-                        .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10).stroke(gradient,lineWidth: 5)
-                        )
-                        .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-                            Button(action: {}){
-                                Image(systemName: "chevron.right").foregroundColor(.white)
-                                    .padding(.init(top: 12, leading: 12, bottom: 13, trailing: 12))
-                                    .background(gradient)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                    }
-                    HStack{
-                        HStack {
-                            Image(systemName: "lock").foregroundColor(.gray)
-                            SecureField("Nazwisko",text:$userName).textContentType(.emailAddress)
-                        }
-                        .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10).stroke(gradient,lineWidth: 5)
-                        )
-                        .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-                            Button(action: {}){
-                                Image(systemName: "chevron.right").foregroundColor(.white)
-                                    .padding(.init(top: 12, leading: 12, bottom: 13, trailing: 12))
-                                    .background(gradient)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                    }
-                }
-
+                Spacer()
             }
-            .padding(.horizontal, -5)
-            .navigationBarTitle("Dane użytkownika")
-            .listStyle(InsetGroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
-            .edgesIgnoringSafeArea(.bottom)
+            if loadingAction == true{
+                LoadingView().shadow(radius: 20)
+            }
+        }
+        .alert(isPresented: $Confirmed){
+            Alert(title: Text("Nazwa konta zmieniona"),
+                message: Text("Konto zostało zmienione!"),
+                dismissButton: Alert.Button.default(
+                    Text("Dalej"), action: { self.presentationMode.wrappedValue.dismiss() }
+                )
+            )
+        }
+        .navigationBarTitle("Zmień maila!", displayMode: .inline)
+        .padding(.top, 10)
     }
 }
 

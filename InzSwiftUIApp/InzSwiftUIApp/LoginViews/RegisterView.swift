@@ -80,10 +80,7 @@ struct RegisterView: View {
             if statusCode == 200{
                 loadingAction = false
                 errorAction = false
-//                let dataJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
                 DispatchQueue.main.async {
-//                    userAuth.setToken(token: dataJSON?["token"] as! String, userName: userName)
-                    print(userAuth.getToken())
                     withAnimation{
                         Confirmed.toggle()
                     }
@@ -267,7 +264,7 @@ struct RegisterView: View {
                 }.padding()
             }
             if loadingAction == true{
-                LoadingView()
+                LoadingView().shadow(radius: 20)
             }
             
         }

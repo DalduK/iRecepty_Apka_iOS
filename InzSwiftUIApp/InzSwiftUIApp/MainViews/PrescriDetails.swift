@@ -82,7 +82,7 @@ struct PrescriDetails: View {
                             HStack {
                                 Text(doctor)
                                 Spacer()
-                                Text(model[0].createdDate ?? "Data Dodania")
+                                Text(model[0].createdDate)
                             }
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -105,7 +105,7 @@ struct PrescriDetails: View {
                             HStack{
                                 Text(drug.name)
                                 Spacer()
-                                Text(String(drug.amount))
+                                Text(String(drug.amount) + " / " + String(drug.amountLeft))
                             }
                         }
                         
