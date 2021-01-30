@@ -14,7 +14,7 @@ struct CardView: View {
     var lekarz: String
     var wykorzystana: String
     var body: some View {
-        let colors = Gradient(colors: wykorzystana == "new" ? [.purple,.blue]: [.gray])
+        let colors = Gradient(colors: wykorzystana == "active" ? [.purple,.blue]: [.gray])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
         VStack {
             if image == "NoImage"{

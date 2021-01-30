@@ -541,6 +541,8 @@
 		01F7AEDC25B6333000B1A5ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
@@ -553,7 +555,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = InzSwiftUIApp;
 			};
 			name = Debug;
@@ -561,6 +563,8 @@
 		01F7AEDD25B6333000B1A5ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
@@ -573,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = InzSwiftUIApp;
 			};
 			name = Release;

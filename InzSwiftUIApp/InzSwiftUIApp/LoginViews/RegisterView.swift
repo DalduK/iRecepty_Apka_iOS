@@ -22,7 +22,6 @@ struct RegisterView: View {
     @State var errordetails: String = ""
     @State var errorAction = false
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @Environment(\.openURL) var openURL
     @EnvironmentObject var userAuth: UserAuth
     @State private var rules = false
     @State var loadingAction: Bool = false
