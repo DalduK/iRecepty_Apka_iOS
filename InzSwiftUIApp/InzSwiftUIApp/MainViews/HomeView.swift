@@ -17,13 +17,14 @@ struct HomeView: View {
     @State private var showUsed = false
     @State private var cards = [HomeData]()
     @EnvironmentObject var userAuth: UserAuth
-    @State private var request = "all"
+    @State private var request = "active"
     @State var didAppear = false
     @State var appearCount = 0
     @State var errorAction: Bool = false
     @State var loadingAction: Bool = false
     @State var errorname = ""
     @State var errordetails = ""
+  
         
     enum Tab {
         case featured
@@ -47,6 +48,8 @@ struct HomeView: View {
             return "Aktywne"
         }
     }
+    
+    
     
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {

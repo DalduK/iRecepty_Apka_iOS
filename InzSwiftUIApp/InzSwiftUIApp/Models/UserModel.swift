@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct UserData:  Hashable, Codable {
+struct UserModel:  Hashable, Codable {
     var login: String
     var name: String
     var email: String

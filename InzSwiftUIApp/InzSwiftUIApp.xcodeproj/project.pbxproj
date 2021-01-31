@@ -30,7 +30,7 @@
 		0198C11425C21085008D4DC8 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198C11325C21085008D4DC8 /* DetailModel.swift */; };
 		01ACD96325BDEECD0012D94A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */; };
 		01BA5F9A25C350CE00AA3D2A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BA5F9925C350CE00AA3D2A /* LoadingView.swift */; };
-		01BA5F9E25C3580300AA3D2A /* UsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BA5F9D25C3580300AA3D2A /* UsersData.swift */; };
+		01BA5F9E25C3580300AA3D2A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BA5F9D25C3580300AA3D2A /* UserModel.swift */; };
 		01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */; };
 		01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADC257A2C2600643495 /* ContentView.swift */; };
 		01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6ADE257A2C2600643495 /* Assets.xcassets */; };
@@ -72,7 +72,7 @@
 		0198C11325C21085008D4DC8 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		01BA5F9925C350CE00AA3D2A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = InzSwiftUIApp/UnusedViews/LoadingView.swift; sourceTree = SOURCE_ROOT; };
-		01BA5F9D25C3580300AA3D2A /* UsersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersData.swift; sourceTree = "<group>"; };
+		01BA5F9D25C3580300AA3D2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppApp.swift; sourceTree = "<group>"; };
 		01BF6ADC257A2C2600643495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -107,11 +107,8 @@
 			children = (
 				0198C11325C21085008D4DC8 /* DetailModel.swift */,
 				0172E476257A83CE00ED727C /* UserAuth.swift */,
-				018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */,
 				0104E1D825C0229B000A7C97 /* HomeData.swift */,
-				0191926525C2C106005790EA /* PasswordValidator.swift */,
-				0191926F25C3463B005790EA /* timetransfer.swift */,
-				01BA5F9D25C3580300AA3D2A /* UsersData.swift */,
+				01BA5F9D25C3580300AA3D2A /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +168,10 @@
 		01BA5F9825C350C000AA3D2A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0191926525C2C106005790EA /* PasswordValidator.swift */,
+				018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */,
 				01BA5F9925C350CE00AA3D2A /* LoadingView.swift */,
+				0191926F25C3463B005790EA /* timetransfer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */,
 				01BA5F9A25C350CE00AA3D2A /* LoadingView.swift in Sources */,
 				0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */,
-				01BA5F9E25C3580300AA3D2A /* UsersData.swift in Sources */,
+				01BA5F9E25C3580300AA3D2A /* UserModel.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
 				0191927025C3463B005790EA /* timetransfer.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,

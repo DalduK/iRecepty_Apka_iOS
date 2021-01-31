@@ -14,6 +14,7 @@ struct PrescriDetails: View {
     @State var model = [PrescriData]()
     @State var didAppear = false
     @State var appearCount = 0
+
     
     func onLoad() {
         if didAppear == false {

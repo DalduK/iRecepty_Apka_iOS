@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import Foundation
 
 class UserAuth: ObservableObject {
     @Published var isLoggeddin = false
@@ -16,6 +17,7 @@ class UserAuth: ObservableObject {
     
     
     func logout(){
+        
         self.isLoggeddin = false
         self.token = ""
         self.userName = ""
