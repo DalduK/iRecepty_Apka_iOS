@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct InzSwiftUIAppApp: App {
-    @Environment(\.colorScheme) var colorScheme
-    @StateObject var userAuth = UserAuth()
-    @AppStorage("Mode") private var isDarkMode = 0
+    private let userAuth = UserAuth()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(userAuth)
+            ContentView().environmentObject(userAuth).disableAutocorrection(true).autocapitalization(.none)
         }
     }
 }

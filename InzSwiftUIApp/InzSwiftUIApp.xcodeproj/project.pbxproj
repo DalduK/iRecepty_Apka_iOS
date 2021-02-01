@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0104E1D925C0229B000A7C97 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0104E1D825C0229B000A7C97 /* HomeData.swift */; };
 		0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61025A88F8700297BFE /* NewPasswordView.swift */; };
 		0114F61425A8EE0300297BFE /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61325A8EE0300297BFE /* NewData.swift */; };
 		0114F61725A8F7CE00297BFE /* eMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114F61625A8F7CE00297BFE /* eMailView.swift */; };
-		01232F47257D955B00563508 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01232F46257D955B00563508 /* LoadingView.swift */; };
-		013F85BE257EB76300C08E72 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F85BD257EB76300C08E72 /* MenuView.swift */; };
-		0167D1D925A0792C00A843BD /* ReceptRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1D825A0792C00A843BD /* ReceptRowView.swift */; };
-		0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1DB25A07D4700A843BD /* ReceptList.swift */; };
-		0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1E225A07EDD00A843BD /* ReceptDetails.swift */; };
-		0167D1E825A0B07200A843BD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1E725A0B07200A843BD /* SettingsView.swift */; };
+		0167D1D925A0792C00A843BD /* PrescriRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1D825A0792C00A843BD /* PrescriRowView.swift */; };
+		0167D1DC25A07D4700A843BD /* PrescriList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1DB25A07D4700A843BD /* PrescriList.swift */; };
+		0167D1E325A07EDD00A843BD /* PrescriDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1E225A07EDD00A843BD /* PrescriDetails.swift */; };
 		0167D1EC25A0B08700A843BD /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0167D1EB25A0B08700A843BD /* UserView.swift */; };
 		0172E477257A83CE00ED727C /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E476257A83CE00ED727C /* UserAuth.swift */; };
 		0172E47A257A845700ED727C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E479257A845700ED727C /* LoginView.swift */; };
@@ -23,12 +21,16 @@
 		0172E480257A895F00ED727C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E47F257A895F00ED727C /* RegisterView.swift */; };
 		0172E483257A8E5400ED727C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0172E482257A8E5400ED727C /* CardView.swift */; };
 		0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175EB2B257AB9AE007C5CF8 /* HomeView.swift */; };
-		0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0175EB2F257ABDB4007C5CF8 /* Data.swift */; };
-		0175EB34257AC07C007C5CF8 /* cardData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0175EB33257AC07C007C5CF8 /* cardData.json */; };
-		0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176652025AA199400E5A8B3 /* ImageLoader.swift */; };
 		0176653225AA499300E5A8B3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653125AA499300E5A8B3 /* AboutView.swift */; };
 		0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0176653425AA4F3A00E5A8B3 /* DeleteView.swift */; };
 		018028DA25AD94C100FE2E71 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */; };
+		0191926625C2C106005790EA /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191926525C2C106005790EA /* PasswordValidator.swift */; };
+		0191926A25C2DCF0005790EA /* FristTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191926925C2DCF0005790EA /* FristTimeView.swift */; };
+		0191927025C3463B005790EA /* timetransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191926F25C3463B005790EA /* timetransfer.swift */; };
+		0198C11425C21085008D4DC8 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198C11325C21085008D4DC8 /* DetailModel.swift */; };
+		01ACD96325BDEECD0012D94A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */; };
+		01BA5F9A25C350CE00AA3D2A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BA5F9925C350CE00AA3D2A /* LoadingView.swift */; };
+		01BA5F9E25C3580300AA3D2A /* UsersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BA5F9D25C3580300AA3D2A /* UsersData.swift */; };
 		01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */; };
 		01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BF6ADC257A2C2600643495 /* ContentView.swift */; };
 		01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BF6ADE257A2C2600643495 /* Assets.xcassets */; };
@@ -47,15 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0104E1D825C0229B000A7C97 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		0114F61025A88F8700297BFE /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
 		0114F61325A8EE0300297BFE /* NewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
 		0114F61625A8F7CE00297BFE /* eMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eMailView.swift; sourceTree = "<group>"; };
-		01232F46257D955B00563508 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		013F85BD257EB76300C08E72 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		0167D1D825A0792C00A843BD /* ReceptRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptRowView.swift; sourceTree = "<group>"; };
-		0167D1DB25A07D4700A843BD /* ReceptList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptList.swift; sourceTree = "<group>"; };
-		0167D1E225A07EDD00A843BD /* ReceptDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptDetails.swift; sourceTree = "<group>"; };
-		0167D1E725A0B07200A843BD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0167D1D825A0792C00A843BD /* PrescriRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriRowView.swift; sourceTree = "<group>"; };
+		0167D1DB25A07D4700A843BD /* PrescriList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriList.swift; sourceTree = "<group>"; };
+		0167D1E225A07EDD00A843BD /* PrescriDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrescriDetails.swift; sourceTree = "<group>"; };
 		0167D1EB25A0B08700A843BD /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		0172E476257A83CE00ED727C /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		0172E479257A845700ED727C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -63,12 +63,16 @@
 		0172E47F257A895F00ED727C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		0172E482257A8E5400ED727C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0175EB2B257AB9AE007C5CF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		0175EB2F257ABDB4007C5CF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		0175EB33257AC07C007C5CF8 /* cardData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cardData.json; sourceTree = "<group>"; };
-		0176652025AA199400E5A8B3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		0176653125AA499300E5A8B3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		0176653425AA4F3A00E5A8B3 /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		0191926525C2C106005790EA /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
+		0191926925C2DCF0005790EA /* FristTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FristTimeView.swift; sourceTree = "<group>"; };
+		0191926F25C3463B005790EA /* timetransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timetransfer.swift; sourceTree = "<group>"; };
+		0198C11325C21085008D4DC8 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		01BA5F9925C350CE00AA3D2A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = InzSwiftUIApp/UnusedViews/LoadingView.swift; sourceTree = SOURCE_ROOT; };
+		01BA5F9D25C3580300AA3D2A /* UsersData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersData.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppApp.swift; sourceTree = "<group>"; };
 		01BF6ADC257A2C2600643495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -101,20 +105,15 @@
 		0175EB28257AB6BA007C5CF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0176652025AA199400E5A8B3 /* ImageLoader.swift */,
-				0175EB2F257ABDB4007C5CF8 /* Data.swift */,
+				0198C11325C21085008D4DC8 /* DetailModel.swift */,
 				0172E476257A83CE00ED727C /* UserAuth.swift */,
 				018028D925AD94C100FE2E71 /* QRCodeGenerator.swift */,
+				0104E1D825C0229B000A7C97 /* HomeData.swift */,
+				0191926525C2C106005790EA /* PasswordValidator.swift */,
+				0191926F25C3463B005790EA /* timetransfer.swift */,
+				01BA5F9D25C3580300AA3D2A /* UsersData.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		0175EB29257AB6E0007C5CF8 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0175EB33257AC07C007C5CF8 /* cardData.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		0176652525AA34A700E5A8B3 /* LoginViews */ = {
@@ -130,25 +129,15 @@
 		0176652725AA352300E5A8B3 /* RowListViews */ = {
 			isa = PBXGroup;
 			children = (
-				0167D1D825A0792C00A843BD /* ReceptRowView.swift */,
-				0167D1DB25A07D4700A843BD /* ReceptList.swift */,
+				0167D1D825A0792C00A843BD /* PrescriRowView.swift */,
+				0167D1DB25A07D4700A843BD /* PrescriList.swift */,
 			);
 			path = RowListViews;
-			sourceTree = "<group>";
-		};
-		0176652825AA353900E5A8B3 /* UnusedViews */ = {
-			isa = PBXGroup;
-			children = (
-				01232F46257D955B00563508 /* LoadingView.swift */,
-				013F85BD257EB76300C08E72 /* MenuView.swift */,
-			);
-			path = UnusedViews;
 			sourceTree = "<group>";
 		};
 		0176652925AA355700E5A8B3 /* SettingViews */ = {
 			isa = PBXGroup;
 			children = (
-				0167D1E725A0B07200A843BD /* SettingsView.swift */,
 				0114F61625A8F7CE00297BFE /* eMailView.swift */,
 				0167D1EB25A0B08700A843BD /* UserView.swift */,
 				0114F61025A88F8700297BFE /* NewPasswordView.swift */,
@@ -165,9 +154,26 @@
 				01BF6ADC257A2C2600643495 /* ContentView.swift */,
 				0175EB2B257AB9AE007C5CF8 /* HomeView.swift */,
 				0172E482257A8E5400ED727C /* CardView.swift */,
-				0167D1E225A07EDD00A843BD /* ReceptDetails.swift */,
+				0167D1E225A07EDD00A843BD /* PrescriDetails.swift */,
+				0191926925C2DCF0005790EA /* FristTimeView.swift */,
 			);
 			path = MainViews;
+			sourceTree = "<group>";
+		};
+		01ACD96125BDEEB70012D94A /* KeyboardResponder */ = {
+			isa = PBXGroup;
+			children = (
+				01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */,
+			);
+			path = KeyboardResponder;
+			sourceTree = "<group>";
+		};
+		01BA5F9825C350C000AA3D2A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01BA5F9925C350CE00AA3D2A /* LoadingView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		01BF6ACE257A2C2600643495 = {
@@ -191,13 +197,13 @@
 		01BF6AD9257A2C2600643495 /* InzSwiftUIApp */ = {
 			isa = PBXGroup;
 			children = (
+				01BA5F9825C350C000AA3D2A /* Utils */,
+				01ACD96125BDEEB70012D94A /* KeyboardResponder */,
 				0176652A25AA359300E5A8B3 /* MainViews */,
 				0176652525AA34A700E5A8B3 /* LoginViews */,
 				0176652925AA355700E5A8B3 /* SettingViews */,
-				0176652825AA353900E5A8B3 /* UnusedViews */,
 				0176652725AA352300E5A8B3 /* RowListViews */,
 				0175EB28257AB6BA007C5CF8 /* Models */,
-				0175EB29257AB6E0007C5CF8 /* Resources */,
 				01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */,
 				01BF6AE3257A2C2600643495 /* Info.plist */,
 				01BF6ADE257A2C2600643495 /* Assets.xcassets */,
@@ -305,7 +311,6 @@
 			files = (
 				01BF6AE2257A2C2600643495 /* Preview Assets.xcassets in Resources */,
 				01BF6ADF257A2C2600643495 /* Assets.xcassets in Resources */,
-				0175EB34257AC07C007C5CF8 /* cardData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,26 +330,29 @@
 			files = (
 				0114F61425A8EE0300297BFE /* NewData.swift in Sources */,
 				0176653225AA499300E5A8B3 /* AboutView.swift in Sources */,
-				0167D1E825A0B07200A843BD /* SettingsView.swift in Sources */,
-				0176652125AA199400E5A8B3 /* ImageLoader.swift in Sources */,
 				0176653525AA4F3B00E5A8B3 /* DeleteView.swift in Sources */,
-				0167D1DC25A07D4700A843BD /* ReceptList.swift in Sources */,
-				0167D1E325A07EDD00A843BD /* ReceptDetails.swift in Sources */,
+				0191926A25C2DCF0005790EA /* FristTimeView.swift in Sources */,
+				01ACD96325BDEECD0012D94A /* KeyboardResponder.swift in Sources */,
+				0167D1DC25A07D4700A843BD /* PrescriList.swift in Sources */,
+				0167D1E325A07EDD00A843BD /* PrescriDetails.swift in Sources */,
 				018028DA25AD94C100FE2E71 /* QRCodeGenerator.swift in Sources */,
 				0167D1EC25A0B08700A843BD /* UserView.swift in Sources */,
 				0175EB2C257AB9AE007C5CF8 /* HomeView.swift in Sources */,
+				01BA5F9A25C350CE00AA3D2A /* LoadingView.swift in Sources */,
 				0114F61125A88F8700297BFE /* NewPasswordView.swift in Sources */,
+				01BA5F9E25C3580300AA3D2A /* UsersData.swift in Sources */,
 				0172E483257A8E5400ED727C /* CardView.swift in Sources */,
+				0191927025C3463B005790EA /* timetransfer.swift in Sources */,
 				0172E47D257A87A600ED727C /* PassView.swift in Sources */,
+				0191926625C2C106005790EA /* PasswordValidator.swift in Sources */,
+				0198C11425C21085008D4DC8 /* DetailModel.swift in Sources */,
 				0114F61725A8F7CE00297BFE /* eMailView.swift in Sources */,
-				01232F47257D955B00563508 /* LoadingView.swift in Sources */,
 				0172E477257A83CE00ED727C /* UserAuth.swift in Sources */,
+				0104E1D925C0229B000A7C97 /* HomeData.swift in Sources */,
 				01BF6ADD257A2C2600643495 /* ContentView.swift in Sources */,
 				0172E480257A895F00ED727C /* RegisterView.swift in Sources */,
-				013F85BE257EB76300C08E72 /* MenuView.swift in Sources */,
-				0167D1D925A0792C00A843BD /* ReceptRowView.swift in Sources */,
+				0167D1D925A0792C00A843BD /* PrescriRowView.swift in Sources */,
 				0172E47A257A845700ED727C /* LoginView.swift in Sources */,
-				0175EB30257ABDB4007C5CF8 /* Data.swift in Sources */,
 				01BF6ADB257A2C2600643495 /* InzSwiftUIAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +541,8 @@
 		01F7AEDC25B6333000B1A5ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
@@ -545,7 +555,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = InzSwiftUIApp;
 			};
 			name = Debug;
@@ -553,6 +563,8 @@
 		01F7AEDD25B6333000B1A5ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J2QYS83JR9;
 				INFOPLIST_FILE = InzSwiftUIAppUITests/Info.plist;
@@ -565,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = InzApp.InzSwiftUIAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = InzSwiftUIApp;
 			};
 			name = Release;

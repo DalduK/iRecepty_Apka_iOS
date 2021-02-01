@@ -10,6 +10,90 @@ import SwiftUI
 struct UserView: View {
 //    @AppStorage("Mode") private var isDarkMode = 0
     @EnvironmentObject var userAuth: UserAuth
+    @State var userData = [UserData]()
+    @State var didAppear = false
+    @State var appearCount = 0
+    @State var errorAction: Bool = false
+    @State var loadingAction: Bool = false
+    @State var errorname = ""
+    @State var errordetails = ""
+    
+    func onLoad() {
+        if didAppear == false {
+            appearCount += 1
+            getUserData()
+        }
+        didAppear = true
+    }
+    
+    func getHomeData(filter: String) {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
+            print("Invalid URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            var statusCode: Int = 0
+            guard let data = data, let response = response, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                statusCode = httpResponse.statusCode
+            }
+            print("StatusCode: \(statusCode)")
+            if statusCode == 200{
+                errorAction = false
+                if let dataJSON = try? JSONDecoder().decode(UserData.self, from: data){
+                    DispatchQueue.main.async {
+                        self.userData.append(dataJSON)
+                    }
+                    return
+                }
+            }else {
+                loadingAction = false
+                errorname = "Użytkownik Wylogowany"
+                errordetails = "Ktoś zalogował się na innym urządzeniu, bądź token utracił ważność. Zaloguj się ponownie"
+                errorAction = true
+            }
+            
+        }
+        .resume()
+    }
+    
+    func getUserData() {
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/api/user/details") else {
+            print("Invalid URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + userAuth.getToken(), forHTTPHeaderField: "Authorization")
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                print("data")
+                let str = String(decoding: data, as: UTF8.self)
+                print(str)
+                print("request")
+                if let response = try? JSONDecoder().decode(UserData.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.userData.append(response)
+                        print(userData[0])
+                    }
+                    return
+                }
+            }
+        }.resume()
+    }
+    
     var body: some View {
         NavigationView{
             List{
@@ -20,40 +104,49 @@ struct UserView: View {
                         
                 }
                 
-                
-                
-                Section {
-                    HStack{
-                        Text("Nazwa użytkownika")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                    Text("dalduk")
+                if userData.isEmpty == false{
+                    Section {
+                        HStack{
+                            Text("Nazwa użytkownika")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                        Text(userData[0].login)
+                        }
+                        HStack{
+                            Text("Imię i nazwisko")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                            Text(userData[0].name)
+                        }
+                        HStack{
+                            Text("Data urodzenia")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                            Text(userData[0].birthdayDate)
+                        }
+                        HStack{
+                            Text("Pesel")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                            Text(userData[0].pesel)
+                        }
+                        HStack{
+                            Text("Email")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                            Text(userData[0].email)
+                        }
+                        
                     }
-                    HStack{
-                        Text("Imię i nazwisko")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("Przemysław Woźny")
+                }else{
+                    Section{
+                        HStack{
+                            Text("Loading")
+                                .foregroundColor(Color.gray)
+                            Spacer()
+                            
+                        }
                     }
-                    HStack{
-                        Text("Data urodzenia")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("07/02/1998")
-                    }
-                    HStack{
-                        Text("Pesel")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("12345678901")
-                    }
-                    HStack{
-                        Text("Email")
-                            .foregroundColor(Color.gray)
-                        Spacer()
-                        Text("dalduk14@gmail.com")
-                    }
-                    
                 }
                 Section {
                     NavigationLink(
@@ -63,7 +156,7 @@ struct UserView: View {
                     }
                     NavigationLink(
                         destination: NewData()){
-                        Text("Zmień dane")
+                        Text("Zmień nazwę użytkownika")
                                 .gradientForeground(colors:  [.purple,.blue])
                     }
                     NavigationLink(
@@ -73,13 +166,6 @@ struct UserView: View {
                     }
                 }
                 
-//                Section{
-//                    Picker("Kolorystyka", selection: $isDarkMode){
-//                        Text("Systemowy (Uwaga restart aplikacji)").tag(0)
-//                        Text("Ciemny").tag(1)
-//                        Text("Jasny").tag(2)
-//                    }
-//                }
                 
                 Section {
                     HStack{
@@ -131,6 +217,19 @@ struct UserView: View {
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Ustawienia")
         }
+        .onAppear(perform: {
+            onLoad()
+        })
+        .alert(isPresented: $errorAction){
+            Alert(title: Text(errorname),
+                message: Text(errordetails),
+                dismissButton: Alert.Button.default(
+                    Text("Zamknij"), action: { userAuth.logout() }
+                )
+            )
+        }
+        .navigationBarTitle("Powrót")
+        .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.bottom)
         
     }
@@ -144,6 +243,7 @@ extension View {
             .mask(self)
     }
 }
+
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
         UserView()

@@ -10,12 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var userAuth: UserAuth
-    @State var showMenu = false
     var body: some View {
         if !userAuth.isLoggeddin {
-            LoginView()
+            return AnyView(LoginView())
         } else {
-            HomeView()
+            return AnyView(HomeView())
         }
     }
 }
