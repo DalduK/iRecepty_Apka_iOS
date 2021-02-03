@@ -42,7 +42,7 @@ struct HomeView: View {
     var typeOfPresc:  String {
         if request == "all"{
             return "Wszystkie"
-        } else if request == "retire" {
+        } else if request == "retired" {
             return "Wykorzystane"
         }else {
             return "Aktywne"
@@ -77,6 +77,9 @@ struct HomeView: View {
                 if let dataJSON = try? JSONDecoder().decode([HomeData].self, from: data){
                     DispatchQueue.main.async {
                         self.cards = dataJSON
+                        cards.sort {
+                            $0.creationDate < $1.creationDate
+                        }
                     }
                     return
                 }
@@ -123,7 +126,7 @@ struct HomeView: View {
                                         }
                                         
                                         Button(action: {
-                                            request = "retire"
+                                            request = "retired"
                                             getHomeData(filter: request)
                                         }) {
                                             Text("Wykorzystane")
@@ -161,7 +164,7 @@ struct HomeView: View {
                                     ScrollView (.horizontal, showsIndicators: true){
                                         HStack(spacing: 20)
                                         {
-                                            ForEach(cards,id: \.creationDate) { cardsIter in
+                                            ForEach(cards,id: \.number) { cardsIter in
                                                 let doubleTime = Double(cardsIter.creationDate)
                                                 let date = getDateFromTimeStamp(timeStamp: doubleTime!)
                                                 NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){

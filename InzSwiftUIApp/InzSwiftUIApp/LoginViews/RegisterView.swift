@@ -182,7 +182,7 @@ struct RegisterView: View {
                                 UIApplication.shared.open(URL(string: "https://gist.github.com/DalduK/81ad2174ccfe6f7580102e79c46378d9")!, options: [:], completionHandler: nil)
                             }
                             Spacer()
-                            Toggle("", isOn: $rules).labelsHidden()
+                            Toggle("reg", isOn: $rules).labelsHidden()
                         }.padding(.init(top: 5, leading: 15, bottom: 5, trailing: 15))
                         
                         ZStack{

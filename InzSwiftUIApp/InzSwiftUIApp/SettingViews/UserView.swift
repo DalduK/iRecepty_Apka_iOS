@@ -10,7 +10,7 @@ import SwiftUI
 struct UserView: View {
 //    @AppStorage("Mode") private var isDarkMode = 0
     @EnvironmentObject var userAuth: UserAuth
-    @State var userData = [UserData]()
+    @State var userData = [UserModel]()
     @State var didAppear = false
     @State var appearCount = 0
     @State var errorAction: Bool = false
@@ -49,7 +49,7 @@ struct UserView: View {
             print("StatusCode: \(statusCode)")
             if statusCode == 200{
                 errorAction = false
-                if let dataJSON = try? JSONDecoder().decode(UserData.self, from: data){
+                if let dataJSON = try? JSONDecoder().decode(UserModel.self, from: data){
                     DispatchQueue.main.async {
                         self.userData.append(dataJSON)
                     }
@@ -83,7 +83,7 @@ struct UserView: View {
                 let str = String(decoding: data, as: UTF8.self)
                 print(str)
                 print("request")
-                if let response = try? JSONDecoder().decode(UserData.self, from: data) {
+                if let response = try? JSONDecoder().decode(UserModel.self, from: data) {
                     DispatchQueue.main.async {
                         self.userData.append(response)
                         print(userData[0])

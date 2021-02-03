@@ -109,7 +109,7 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "lock").foregroundColor(.gray)
-                        SecureField("Password",text:$password)
+                        SecureField("Hasło",text:$password)
                     }
                     .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(
