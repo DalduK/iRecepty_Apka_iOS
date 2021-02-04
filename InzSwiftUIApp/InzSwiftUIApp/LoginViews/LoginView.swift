@@ -71,8 +71,8 @@ struct LoginView: View {
                 }
             }else {
                 loadingAction = false
-                errorname = "Nie istnieje taki użytkownik"
-                errordetails = "Podaj poprawne dane"
+                errorname = "Błędna odpowiedź z serwera"
+                errordetails = "Podaj poprawne dane, sprawdź czy hasło jest poprawne"
                 errorAction = true
             }
             
@@ -109,7 +109,7 @@ struct LoginView: View {
                     
                     HStack {
                         Image(systemName: "lock").foregroundColor(.gray)
-                        SecureField("Password",text:$password)
+                        SecureField("Hasło",text:$password)
                     }
                     .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                     .overlay(

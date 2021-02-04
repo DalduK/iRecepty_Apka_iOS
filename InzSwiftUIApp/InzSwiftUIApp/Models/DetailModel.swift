@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct PrescriData:  Hashable, Codable {
     var number: String?
     var pesel: String?

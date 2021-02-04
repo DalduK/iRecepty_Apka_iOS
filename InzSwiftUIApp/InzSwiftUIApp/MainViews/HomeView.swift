@@ -17,13 +17,14 @@ struct HomeView: View {
     @State private var showUsed = false
     @State private var cards = [HomeData]()
     @EnvironmentObject var userAuth: UserAuth
-    @State private var request = "all"
+    @State private var request = "active"
     @State var didAppear = false
     @State var appearCount = 0
     @State var errorAction: Bool = false
     @State var loadingAction: Bool = false
     @State var errorname = ""
     @State var errordetails = ""
+  
         
     enum Tab {
         case featured
@@ -41,12 +42,14 @@ struct HomeView: View {
     var typeOfPresc:  String {
         if request == "all"{
             return "Wszystkie"
-        } else if request == "retire" {
+        } else if request == "retired" {
             return "Wykorzystane"
         }else {
             return "Aktywne"
         }
     }
+    
+    
     
     func getHomeData(filter: String) {
         guard let url = URL(string: "https://recepty.eu.ngrok.io/api/prescription/patient/" + filter) else {
@@ -74,6 +77,9 @@ struct HomeView: View {
                 if let dataJSON = try? JSONDecoder().decode([HomeData].self, from: data){
                     DispatchQueue.main.async {
                         self.cards = dataJSON
+                        cards.sort {
+                            $0.creationDate < $1.creationDate
+                        }
                     }
                     return
                 }
@@ -120,7 +126,7 @@ struct HomeView: View {
                                         }
                                         
                                         Button(action: {
-                                            request = "retire"
+                                            request = "retired"
                                             getHomeData(filter: request)
                                         }) {
                                             Text("Wykorzystane")
@@ -158,7 +164,7 @@ struct HomeView: View {
                                     ScrollView (.horizontal, showsIndicators: true){
                                         HStack(spacing: 20)
                                         {
-                                            ForEach(cards,id: \.creationDate) { cardsIter in
+                                            ForEach(cards,id: \.number) { cardsIter in
                                                 let doubleTime = Double(cardsIter.creationDate)
                                                 let date = getDateFromTimeStamp(timeStamp: doubleTime!)
                                                 NavigationLink(destination: PrescriDetails(cardID: cardsIter.number, userAuth: userAuth, doctor: cardsIter.doctor)){

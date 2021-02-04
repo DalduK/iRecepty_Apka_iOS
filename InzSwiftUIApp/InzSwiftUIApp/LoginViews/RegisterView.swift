@@ -179,10 +179,10 @@ struct RegisterView: View {
                         .padding(.init(top: 10, leading: 15, bottom: 5, trailing: 15))
                         HStack{
                             Button("Potwierdź regulamin") {
-                                UIApplication.shared.open(URL(string: "https://gist.github.com/DalduK/81ad2174ccfe6f7580102e79c46378d9")!, options: [:], completionHandler: nil)
+                                UIApplication.shared.open(URL(string: "https://gist.github.com/DalduK/5e08f49bdd916157c63c8082c9cbf7b2#file-gistfile1-txt")!, options: [:], completionHandler: nil)
                             }
                             Spacer()
-                            Toggle("", isOn: $rules).labelsHidden()
+                            Toggle("reg", isOn: $rules).labelsHidden()
                         }.padding(.init(top: 5, leading: 15, bottom: 5, trailing: 15))
                         
                         ZStack{

@@ -11,13 +11,15 @@ struct PrescriList: View {
     @State private var showUsed = false
     @State private var cards = [HomeData]()
     @EnvironmentObject var userAuth: UserAuth
-    @State private var request = "all"
+    @State private var request = "active"
     @State var didAppear = false
     @State var appearCount = 0
     @State var errorAction: Bool = false
     @State var loadingAction: Bool = false
     @State var errorname = ""
     @State var errordetails = ""
+    
+    
     
     func onLoad() {
         if didAppear == false {
@@ -30,7 +32,7 @@ struct PrescriList: View {
     var typeOfPresc:  String {
         if request == "all"{
             return "Wszystkie"
-        } else if request == "retire" {
+        } else if request == "retired" {
             return "Wykorzystane"
         }else {
             return "Aktywne"
@@ -63,6 +65,9 @@ struct PrescriList: View {
                 if let dataJSON = try? JSONDecoder().decode([HomeData].self, from: data){
                     DispatchQueue.main.async {
                         self.cards = dataJSON
+                        cards.sort {
+                            $0.creationDate < $1.creationDate
+                        }
                     }
                     return
                 }
@@ -91,7 +96,7 @@ struct PrescriList: View {
                         }
                         
                         Button(action: {
-                            request = "retire"
+                            request = "retired"
                             getHomeData(filter: request)
                         }) {
                             Text("Wykorzystane")

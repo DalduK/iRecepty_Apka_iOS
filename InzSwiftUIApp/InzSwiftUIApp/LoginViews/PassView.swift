@@ -12,14 +12,80 @@ import SwiftUI
 struct PassView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var email: String = ""
-    @State var isValid: Bool = false
     @State var text = ""
+    @State var errorname: String = ""
+    @State var errordetails: String = ""
+    @State var errorAction = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var loadingAction: Bool = false
+    @State var Confirmed: Bool = false
+    
+    var errAction: ActionSheet {
+        ActionSheet(title: Text(errorname), message: Text(errordetails), buttons: [.default(Text("Potwierdź"))])
+    }
+    
+    
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return !emailPred.evaluate(with: email)
     }
+    
+    
+    
+    
+    func updateMail(email: String){
+        let isValid = isValidEmail(email)
+        print("MAIL")
+        print(isValid)
+        if isValid == true{
+            errorname = "Niepoprawny mail"
+            errordetails = "Podaj email w dobrym formacie"
+            loadingAction = false
+            errorAction = true
+            return
+        }
+        let json: [String: Any] = ["email" : email]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        guard let url = URL(string: "https://recepty.eu.ngrok.io/updatepass") else {
+            print("Invalid URL")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            var statusCode: Int = 0
+            guard let _ = data, let response = response, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                statusCode = httpResponse.statusCode
+            }
+            print("StatusCode: \(statusCode)")
+            if statusCode == 200{
+                loadingAction = false
+                errorAction = false
+                DispatchQueue.main.async {
+                    withAnimation{
+                        Confirmed.toggle()
+                    }
+                }
+            }else {
+                errorname = "Błąd Aktualizacji"
+                errordetails = "Spróbuj ponownie, bądź sprawdź czy to poprawny mail"
+                loadingAction = false
+                errorAction = true
+            }
+            
+        }
+        task.resume()
+    }
+    
     var body: some View {
         let colors = Gradient(colors: [.purple,.blue])
         let gradient = LinearGradient(gradient: colors, startPoint: .bottomLeading, endPoint: .topTrailing)
@@ -46,7 +112,8 @@ struct PassView: View {
                 ZStack{
                     Button(action: {
                         withAnimation {
-                            isValid = isValidEmail(email)
+                            loadingAction.toggle()
+                            updateMail(email: email)
                     }
                     }){
                         Text("Zaloguj się")
@@ -60,9 +127,18 @@ struct PassView: View {
                 
                 Spacer()
             }
-        }.actionSheet(isPresented: $isValid, content:{
-                    ActionSheet(title: Text("Format maila nie jest poprawny"), message: Text("Ponownie podaj mail"), buttons: [.cancel()])
-        })
+            if loadingAction == true{
+                LoadingView().shadow(radius: 20)
+            }
+        }.actionSheet(isPresented: $errorAction, content:{errAction})
+        .alert(isPresented: $Confirmed){
+            Alert(title: Text("Email wysłany"),
+                message: Text("Aby zresetować hasło wejdź w link dostępny na poczcie!"),
+                dismissButton: Alert.Button.default(
+                    Text("Dalej"), action: { self.mode.wrappedValue.dismiss() }
+                )
+            )
+        }
         .navigationBarTitle("Przypomnij hasło", displayMode: .inline)
         .padding(.top, 10)
         
