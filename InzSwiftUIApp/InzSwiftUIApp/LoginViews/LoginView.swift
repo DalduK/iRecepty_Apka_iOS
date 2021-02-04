@@ -71,8 +71,8 @@ struct LoginView: View {
                 }
             }else {
                 loadingAction = false
-                errorname = "Nie istnieje taki użytkownik"
-                errordetails = "Podaj poprawne dane"
+                errorname = "Błędna odpowiedź z serwera"
+                errordetails = "Podaj poprawne dane, sprawdź czy hasło jest poprawne"
                 errorAction = true
             }
             

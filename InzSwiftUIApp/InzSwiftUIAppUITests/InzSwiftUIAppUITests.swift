@@ -146,7 +146,7 @@ class InzSwiftUIAppUITests: XCTestCase {
         app.keyboards.buttons["Return"].tap()
         
         button.tap()
-        
+        sleep(2)
         app.sheets.firstMatch.buttons["Potwierdź"].tap()
 
         pesel.tap()
@@ -155,7 +155,7 @@ class InzSwiftUIAppUITests: XCTestCase {
         app.firstMatch.buttons["Zamknij"].tap()
         
         button.tap()
-        
+        sleep(2)
         app.sheets.firstMatch.buttons["Potwierdź"].tap()
 
         haslo.tap()
