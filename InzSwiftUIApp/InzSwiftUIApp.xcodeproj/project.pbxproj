@@ -71,7 +71,7 @@
 		0191926F25C3463B005790EA /* timetransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timetransfer.swift; sourceTree = "<group>"; };
 		0198C11325C21085008D4DC8 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		01ACD96225BDEECD0012D94A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
-		01BA5F9925C350CE00AA3D2A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = InzSwiftUIApp/UnusedViews/LoadingView.swift; sourceTree = SOURCE_ROOT; };
+		01BA5F9925C350CE00AA3D2A /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = InzSwiftUIApp/Utils/LoadingView.swift; sourceTree = SOURCE_ROOT; };
 		01BA5F9D25C3580300AA3D2A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		01BF6AD7257A2C2600643495 /* InzSwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InzSwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BF6ADA257A2C2600643495 /* InzSwiftUIAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InzSwiftUIAppApp.swift; sourceTree = "<group>"; };

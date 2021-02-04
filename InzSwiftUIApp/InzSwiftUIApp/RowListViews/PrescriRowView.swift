@@ -31,11 +31,6 @@ struct PrescriRowView: View {
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
                     Spacer()
-                    //                    Text(wykorzystana ? "Nowa": "Wykorzystana")
-                    //                        .font(.subheadline)
-                    //                        .fontWeight(/*@START_MENU_TOKEN@*/.light/*@END_MENU_TOKEN@*/)
-                    //                        .foregroundColor(wykorzystana ? .blue : .red)
-                    //                        .multilineTextAlignment(.leading)
                 }
                 
                 HStack {
@@ -60,10 +55,10 @@ struct PrescriRowView: View {
 
 struct PrescriRowView_Previews: PreviewProvider {
     static var previews: some View {
-        var image = "QRCode"
-        var data = "Data"
-        var recepta = "Recepta"
-        var lekarz = "Dr. Andrzej Wolny"
+        let image = "QRCode"
+        let data = "Data"
+        let recepta = "Recepta"
+        let lekarz = "Dr. Andrzej Wolny"
         PrescriRowView(image: image, data: data, recepta: recepta, lekarz: lekarz, wykorzystana: "new")
     }
 }

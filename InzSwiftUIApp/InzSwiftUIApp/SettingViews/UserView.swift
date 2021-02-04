@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserView: View {
-//    @AppStorage("Mode") private var isDarkMode = 0
     @EnvironmentObject var userAuth: UserAuth
     @State var userData = [UserModel]()
     @State var didAppear = false
